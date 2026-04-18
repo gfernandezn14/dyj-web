@@ -239,7 +239,7 @@ body {
   letter-spacing: -0.005em;
   border-bottom: 1px solid rgba(255,255,255,0.1);
 }
-.nav__overlay-link.is-active { color: var(--dyj-red); }
+.nav__overlay-link.is-active { color: var(--dyj-red-deep); }
 .nav__overlay-ctas { display: flex; flex-direction: column; gap: 12px; margin-top: 20px; }
 .nav__overlay-ctas .nav__cta { text-align: center; padding: 18px 22px; }
 

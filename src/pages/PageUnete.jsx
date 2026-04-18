@@ -64,12 +64,12 @@ export default function PageUnete() {
       <section style={{ background: 'var(--dyj-white)', padding: '120px 48px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80, maxWidth: 1400 }}>
           <div className="reveal">
-            <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Sobre sumarse</div>
+            <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Sobre sumarse</div>
             <div className="display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1 }}>Lo básico</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '40px 0 0', display: 'flex', flexDirection: 'column', gap: 16 }}>
               {TIPS.map((t, i) => (
                 <li key={i} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 16, alignItems: 'baseline', borderBottom: '1px solid rgba(0,0,0,0.1)', paddingBottom: 16 }}>
-                  <span className="mono" style={{ color: 'var(--dyj-red)' }}>{String(i + 1).padStart(2, '0')}</span>
+                  <span className="mono" style={{ color: 'var(--dyj-red-deep)' }}>{String(i + 1).padStart(2, '0')}</span>
                   <span style={{ fontSize: 17, lineHeight: 1.5 }}>{t}</span>
                 </li>
               ))}
