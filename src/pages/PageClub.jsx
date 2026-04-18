@@ -57,7 +57,7 @@ export default function PageClub() {
               color: h.destacado ? 'var(--dyj-white)' : 'var(--dyj-ink)',
               borderTop: '4px solid ' + (h.destacado ? 'var(--dyj-gold)' : 'var(--dyj-red)'),
             }}>
-              <div className="display" style={{ fontSize: 88, lineHeight: 0.9, color: h.destacado ? 'var(--dyj-gold)' : 'var(--dyj-red)' }}>{h.anio}</div>
+              <div className="display" style={{ fontSize: 88, lineHeight: 0.9, color: h.destacado ? 'var(--dyj-gold)' : 'var(--dyj-red-deep)' }}>{h.anio}</div>
               <div className="mono" style={{ opacity: 0.6, marginTop: 10, letterSpacing: '0.18em', fontSize: 11, textTransform: 'uppercase' }}>{h.titulo}</div>
               <div style={{ marginTop: 18, fontSize: 16, lineHeight: 1.55, opacity: h.destacado ? 0.9 : 1 }}>{h.texto}</div>
             </div>
