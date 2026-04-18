@@ -10,6 +10,7 @@ const LINKS = [
 
 export default function Nav({ activePage, setPage }) {
   const [isDark, setIsDark] = useState(true);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const check = () => {
@@ -49,32 +50,73 @@ export default function Nav({ activePage, setPage }) {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle('no-scroll', menuOpen);
+    return () => document.body.classList.remove('no-scroll');
+  }, [menuOpen]);
+
+  const go = (key) => { setPage(key); setMenuOpen(false); };
+
   return (
-    <nav className={'nav ' + (isDark ? 'is-dark-bg' : 'is-light-bg')}>
-      <a href="#inicio" className="nav__brand" onClick={(e) => { e.preventDefault(); setPage('inicio'); }}>
-        <img src="/assets/escudo.png" alt="DyJ" className="nav__brand-logo" />
-        <span className="nav__brand-text">DyJ</span>
-      </a>
-      <div className="nav__links">
-        {LINKS.map((l) => (
-          <a
-            key={l.key}
-            href={'#' + l.key}
-            className={'nav__link ' + (activePage === l.key ? 'is-active' : '')}
-            onClick={(e) => { e.preventDefault(); setPage(l.key); }}
-          >
-            {l.label}
+    <>
+      <nav className={'nav ' + (isDark ? 'is-dark-bg' : 'is-light-bg')}>
+        <a href="#inicio" className="nav__brand" onClick={(e) => { e.preventDefault(); go('inicio'); }}>
+          <img src="/assets/escudo.png" alt="DyJ" className="nav__brand-logo" />
+          <span className="nav__brand-text">DyJ</span>
+        </a>
+        <div className="nav__links">
+          {LINKS.map((l) => (
+            <a
+              key={l.key}
+              href={'#' + l.key}
+              className={'nav__link ' + (activePage === l.key ? 'is-active' : '')}
+              onClick={(e) => { e.preventDefault(); go(l.key); }}
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+        <div className="nav__ctas">
+          <a href="#socio" className="nav__cta nav__cta--ghost" onClick={(e) => { e.preventDefault(); go('socio'); }}>
+            Quiero ser socio
           </a>
-        ))}
+          <a href="#unete" className="nav__cta" onClick={(e) => { e.preventDefault(); go('unete'); }}>
+            Quiero jugar
+          </a>
+        </div>
+        <button
+          className={'nav__burger ' + (menuOpen ? 'is-open' : '')}
+          onClick={() => setMenuOpen((v) => !v)}
+          aria-label={menuOpen ? 'Cerrar menú' : 'Abrir menú'}
+        >
+          <span /><span /><span />
+        </button>
+      </nav>
+
+      <div className={'nav__overlay ' + (menuOpen ? 'is-open' : '')} onClick={() => setMenuOpen(false)}>
+        <div className="nav__overlay-inner" onClick={(e) => e.stopPropagation()}>
+          <div className="nav__overlay-links">
+            {LINKS.map((l) => (
+              <a
+                key={l.key}
+                href={'#' + l.key}
+                className={'nav__overlay-link ' + (activePage === l.key ? 'is-active' : '')}
+                onClick={(e) => { e.preventDefault(); go(l.key); }}
+              >
+                {l.label}
+              </a>
+            ))}
+          </div>
+          <div className="nav__overlay-ctas">
+            <a href="#socio" className="nav__cta nav__cta--ghost" onClick={(e) => { e.preventDefault(); go('socio'); }}>
+              Quiero ser socio
+            </a>
+            <a href="#unete" className="nav__cta" onClick={(e) => { e.preventDefault(); go('unete'); }}>
+              Quiero jugar
+            </a>
+          </div>
+        </div>
       </div>
-      <div className="nav__ctas">
-        <a href="#socio" className="nav__cta nav__cta--ghost" onClick={(e) => { e.preventDefault(); setPage('socio'); }}>
-          Quiero ser socio
-        </a>
-        <a href="#unete" className="nav__cta" onClick={(e) => { e.preventDefault(); setPage('unete'); }}>
-          Quiero jugar
-        </a>
-      </div>
-    </nav>
+    </>
   );
 }
