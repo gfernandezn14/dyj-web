@@ -130,7 +130,7 @@ export default function MInicio({ setPage }) {
 
       <section className="m-sec m-sec--ink">
         <MSectionHeader eyebrow="El plantel" dark>
-          Los que juegan por <span style={{ color: 'var(--dyj-red-text)' }}>la camiseta</span>
+          Los que juegan por <span style={{ color: 'var(--dyj-red)' }}>la camiseta</span>
         </MSectionHeader>
         <div className="m-rail m-rail--tight reveal">
           {destacados.map((j) => (
