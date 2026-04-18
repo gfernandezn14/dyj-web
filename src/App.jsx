@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import CustomCursor from './components/CustomCursor.jsx';
 import Nav from './components/Nav.jsx';
 import Footer from './components/Footer.jsx';
 import useReveal from './components/useReveal.js';
@@ -35,7 +34,6 @@ export default function App() {
 
   return (
     <>
-      <CustomCursor />
       <Nav activePage={page} setPage={setPage} />
       <main className="page" key={page}>
         <PageEl setPage={setPage} />
