@@ -68,7 +68,7 @@ export default function MPlantel() {
     <>
       <MPageHeader
         kicker="02 · El plantel"
-        title={<>Los que<br /><span style={{ color: 'var(--dyj-red-deep)' }}>juegan</span></>}
+        title={<>Los que<br /><span style={{ color: 'var(--dyj-red-text)' }}>juegan</span></>}
         sub={`${d.plantel.length} jugadores. Cada uno con su historia, su número y su forma propia de dejarlo todo en la cancha.`}
         bgImg="/assets/plantel.jpg"
       />
