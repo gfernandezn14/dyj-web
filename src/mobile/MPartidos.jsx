@@ -6,7 +6,7 @@ function GrupoTabla({ grupo, equipos }) {
   return (
     <div style={{ marginBottom: 36 }}>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, padding: '0 4px 14px', flexWrap: 'wrap' }}>
-        <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--dyj-red)' }}>
+        <div className="display m-red-text" style={{ fontSize: 36, lineHeight: 1 }}>
           Grupo {grupo}
         </div>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em', opacity: 0.55, textTransform: 'uppercase' }}>
@@ -29,13 +29,12 @@ function GrupoTabla({ grupo, equipos }) {
           {equipos.map((t) => {
             const esDyj = t.equipo.includes('Defensa');
             return (
-              <div key={t.pos} style={{
+              <div key={t.pos} className={esDyj ? 'm-red-bg' : undefined} style={{
                 display: 'grid',
                 gridTemplateColumns: '40px 1.6fr repeat(6, 32px) 48px',
                 gap: 8,
                 padding: '14px 4px',
                 alignItems: 'center',
-                background: esDyj ? 'var(--dyj-red)' : 'transparent',
                 color: esDyj ? 'var(--dyj-white)' : 'var(--dyj-ink)',
                 borderBottom: '1px solid rgba(0,0,0,0.08)',
               }}>
@@ -47,7 +46,7 @@ function GrupoTabla({ grupo, equipos }) {
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>{t.p}</span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>{t.gf}</span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>{t.gc}</span>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 22, textAlign: 'right', color: esDyj ? 'var(--dyj-gold)' : 'var(--dyj-red)' }}>{t.pts}</span>
+                <span className={esDyj ? undefined : 'm-red-text'} style={{ fontFamily: 'var(--font-display)', fontSize: 22, textAlign: 'right', color: esDyj ? 'var(--dyj-gold)' : undefined }}>{t.pts}</span>
               </div>
             );
           })}
@@ -109,7 +108,10 @@ export default function MPartidos() {
           )}
 
           {tab === 'resultados' && d.resultadosRecientes.map((r, i) => {
-            const accentBg = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-red)' : 'rgba(0,0,0,0.3)';
+            const isD = r.resultado === 'D';
+            const isV = r.resultado === 'V';
+            const accentClass = isD ? 'm-red-bg' : '';
+            const accentBg = isV ? 'var(--dyj-gold)' : isD ? undefined : 'rgba(0,0,0,0.3)';
             const accentFg = r.resultado === 'E' ? 'var(--dyj-white)' : 'var(--dyj-ink)';
             return (
               <div key={i} style={{
@@ -119,13 +121,13 @@ export default function MPartidos() {
                 padding: '20px 0',
                 borderBottom: '1px solid rgba(0,0,0,0.08)',
               }}>
-                <div style={{ background: accentBg }} />
+                <div className={accentClass} style={{ background: accentBg }} />
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
                     <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.18em', opacity: 0.55 }}>
                       {r.fecha} · {r.condicion === 'L' ? 'LOCAL' : 'VISITA'}
                     </div>
-                    <div style={{
+                    <div className={accentClass} style={{
                       background: accentBg, color: accentFg,
                       padding: '4px 10px',
                       fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em',

@@ -34,7 +34,7 @@ export default function MFooter() {
     <footer className="m-footer m-footer--center">
       <div className="m-footer__tagline">
         {lines.map((line, i) => (
-          <div key={i} style={{ color: i === lines.length - 1 ? 'var(--dyj-gold)' : 'var(--dyj-red)' }}>
+          <div key={i} className={i === lines.length - 1 ? undefined : 'm-red-text'} style={i === lines.length - 1 ? { color: 'var(--dyj-gold)' } : undefined}>
             {line}
           </div>
         ))}

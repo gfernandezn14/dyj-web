@@ -31,7 +31,7 @@ export default function MUnete() {
     <>
       <MPageHeader
         kicker="05 · Únete"
-        title={<>Queremos verte<br /><span style={{ color: 'var(--dyj-red)' }}>en la cancha</span></>}
+        title={<>Queremos verte<br /><span className="m-red-text">en la cancha</span></>}
         sub="Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Rellena esto y te escribimos para conocerte."
         bgImg="/assets/jugador.jpg"
       />
@@ -42,7 +42,7 @@ export default function MUnete() {
         <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 14 }}>
           {TIPS.map((t, i) => (
             <li key={i} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 14, alignItems: 'baseline', paddingBottom: 14, borderBottom: '1px solid rgba(0,0,0,0.08)' }}>
-              <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--dyj-red)', fontSize: 12, letterSpacing: '0.18em' }}>
+              <span className="m-red-text" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.18em' }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span style={{ fontSize: 15, lineHeight: 1.5 }}>{t}</span>
@@ -54,7 +54,7 @@ export default function MUnete() {
       <section className="m-sec m-sec--bone">
         {sent ? (
           <div style={{ border: '2px solid var(--dyj-ink)', padding: 32, textAlign: 'center' }}>
-            <div className="m-title" style={{ color: 'var(--dyj-red)', fontSize: 48, marginBottom: 10 }}>¡Listo!</div>
+            <div className="m-title m-red-text" style={{ fontSize: 48, marginBottom: 10 }}>¡Listo!</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.22em' }}>
               Te escribimos en las próximas 48 hrs.
             </div>

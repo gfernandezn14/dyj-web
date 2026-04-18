@@ -44,11 +44,11 @@ export default function MSocio() {
 
       <section className="m-sec">
         <span className="m-eyebrow">Beneficios</span>
-        <h2 className="m-title">Lo que recibes<br /><span style={{ color: 'var(--dyj-red)' }}>por ser parte</span></h2>
+        <h2 className="m-title">Lo que recibes<br /><span className="m-red-text">por ser parte</span></h2>
         <ul style={{ listStyle: 'none', padding: 0, margin: '28px 0 0', display: 'flex', flexDirection: 'column', gap: 0 }}>
           {BENEFICIOS.map((b, i) => (
             <li key={i} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 14, alignItems: 'baseline', padding: '16px 0', borderBottom: '1px solid rgba(0,0,0,0.1)', borderTop: i === 0 ? '1px solid rgba(0,0,0,0.1)' : 'none' }}>
-              <span style={{ fontFamily: 'var(--font-mono)', color: 'var(--dyj-red)', fontSize: 12, letterSpacing: '0.18em' }}>
+              <span className="m-red-text" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.18em' }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               <span style={{ fontSize: 15, lineHeight: 1.5 }}>{b}</span>
@@ -66,11 +66,13 @@ export default function MSocio() {
             return (
               <div key={a.tier} style={{
                 padding: 22,
-                background: esHonor ? 'var(--dyj-ink)' : 'var(--dyj-white)',
                 color: esHonor ? 'var(--dyj-white)' : 'var(--dyj-ink)',
-                borderTop: '4px solid ' + (esHonor ? 'var(--dyj-gold)' : 'var(--dyj-red)'),
+                ...(esHonor
+                  ? { background: 'var(--dyj-ink)', borderTop: '4px solid var(--dyj-gold)' }
+                  : { backgroundColor: 'var(--dyj-white)', backgroundImage: 'var(--dyj-red-img)', backgroundSize: '100% 4px', backgroundRepeat: 'no-repeat', backgroundPosition: 'top' }
+                ),
               }}>
-                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: esHonor ? 'var(--dyj-gold)' : 'var(--dyj-red)' }}>
+                <div className={esHonor ? undefined : 'm-red-text'} style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.22em', textTransform: 'uppercase', color: esHonor ? 'var(--dyj-gold)' : undefined }}>
                   Socio {a.tier}
                 </div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 48, lineHeight: 0.95, marginTop: 8, color: esHonor ? 'var(--dyj-gold)' : 'var(--dyj-ink)' }}>
@@ -92,7 +94,7 @@ export default function MSocio() {
         </div>
         {sent ? (
           <div style={{ border: '2px solid var(--dyj-ink)', padding: 32, marginTop: 24, textAlign: 'center' }}>
-            <div className="m-title" style={{ color: 'var(--dyj-red)', fontSize: 48, marginBottom: 10 }}>¡Bienvenido!</div>
+            <div className="m-title m-red-text" style={{ fontSize: 48, marginBottom: 10 }}>¡Bienvenido!</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.22em' }}>
               Te escribimos en las próximas 48 hrs
             </div>

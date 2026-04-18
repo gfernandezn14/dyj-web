@@ -3,9 +3,10 @@
    ========================================================== */
 
 :root {
-  color-scheme: light only;
+  color-scheme: dark light;
   --dyj-red: #C8102E;
   --dyj-red-deep: #8A0A1F;
+  --dyj-red-img: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><rect width='1' height='1' fill='%23C8102E'/></svg>");
   --dyj-gold: #C9A24B;
   --dyj-gold-deep: #9E7B31;
   --dyj-white: #FAF7F2;
@@ -17,6 +18,24 @@
   --font-display: 'Anton', 'Oswald', 'Bebas Neue', sans-serif;
   --font-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+}
+
+/* Anti Samsung Internet "Force Dark": declaramos soporte dark con vars idénticas
+   para que el algoritmo de inversión no transforme la paleta del manual. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dyj-red: #C8102E;
+    --dyj-red-deep: #8A0A1F;
+    --dyj-red-img: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1 1' preserveAspectRatio='none'><rect width='1' height='1' fill='%23C8102E'/></svg>");
+    --dyj-gold: #C9A24B;
+    --dyj-gold-deep: #9E7B31;
+    --dyj-white: #FAF7F2;
+    --dyj-bone: #EDE6DA;
+    --dyj-ink: #0B0B0C;
+    --dyj-ink-soft: #1A1A1C;
+    --dyj-pasto: #2D3B1F;
+  }
+  body { background: var(--dyj-white); color: var(--dyj-ink); }
 }
 
 * { box-sizing: border-box; }
@@ -581,3 +600,60 @@ body {
 .m-ficha__stat-label { font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.55; }
 .m-ficha__stat-val { font-family: var(--font-display); font-size: 32px; color: var(--dyj-red); line-height: 1; margin-top: 4px; }
 .m-ficha__anecdota { font-size: 16px; line-height: 1.55; padding-left: 14px; border-left: 3px solid var(--dyj-red); font-style: italic; margin-top: 20px; }
+
+/* ==========================================================
+   Anti Samsung Internet "Force Dark" — solo móvil.
+   El navegador interno de Samsung invierte luminancia de colores CSS y
+   transforma el rojo del manual (#C8102E) en rosa salmón.
+   No transforma background-image con data-URL (las trata como imagen del autor).
+   Truco: pintamos el rojo via background-image SVG y lo recortamos con
+   background-clip: text para texto. Para fondos, lo aplicamos como capa.
+   ========================================================== */
+
+/* Texto rojo: utility class + override de TODAS las clases mobile que usaban color rojo */
+.m-red-text,
+.m-eyebrow,
+.m-title span.red,
+.m-player-card__num,
+.m-timeline-card__year,
+.m-value__n,
+.m-match__vs,
+.m-tabla__pts,
+.m-page-header__title span.red,
+.m-ficha__stat-val {
+  background-image: var(--dyj-red-img);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: transparent;
+          color: transparent;
+}
+/* Excepciones: en fondo oscuro el eyebrow va dorado, no rojo */
+.m-sec--ink .m-eyebrow,
+.m-sec--red .m-eyebrow {
+  background-image: none;
+  -webkit-text-fill-color: var(--dyj-gold);
+          color: var(--dyj-gold);
+}
+
+/* Fondos rojos: el data-URL queda intacto en Samsung. background-color de respaldo. */
+.m-red-bg,
+.m-sec--red,
+.m-result-card--D,
+.m-match--next,
+.m-tabla__row--us,
+.m-btn--red,
+.m-page-header--red,
+.m-ficha__hero,
+.m-form__submit {
+  background-color: #C8102E;
+  background-image: var(--dyj-red-img);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.m-result-row--D .m-result-row__bar {
+  background-color: #C8102E;
+  background-image: var(--dyj-red-img);
+  background-size: 100% 100%;
+}
