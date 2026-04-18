@@ -16,7 +16,7 @@ function PartidosProximos() {
         gap: 24, alignItems: 'center',
         padding: '32px 24px',
         borderBottom: '1px solid rgba(0,0,0,0.1)',
-        background: 'var(--dyj-red)',
+        background: 'var(--dyj-red-deep)',
         color: 'var(--dyj-white)',
       }}>
         <div>
@@ -53,7 +53,7 @@ function PartidosResultados() {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0, maxWidth: 1200 }}>
       {DYJ_DATA.resultadosRecientes.map((r, i) => {
-        const colorBar = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-red)' : 'rgba(0,0,0,0.3)';
+        const colorBar = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-red-deep)' : 'rgba(0,0,0,0.3)';
         return (
           <div key={i} className="reveal" style={{
             display: 'grid', gridTemplateColumns: '8px 120px 1fr auto 1fr auto',
@@ -98,7 +98,7 @@ function GrupoTabla({ grupo, equipos }) {
         display: 'flex', alignItems: 'baseline', gap: 16,
         padding: '0 16px 16px',
       }}>
-        <div className="display" style={{ fontSize: 56, lineHeight: 1, color: 'var(--dyj-red)' }}>Grupo {grupo}</div>
+        <div className="display" style={{ fontSize: 56, lineHeight: 1, color: 'var(--dyj-red-deep)' }}>Grupo {grupo}</div>
         <div className="mono" style={{ opacity: 0.6, fontSize: 10 }}>1ª FASE · 2º FECHA JUGADA</div>
       </div>
       <div style={{
@@ -121,7 +121,7 @@ function GrupoTabla({ grupo, equipos }) {
             gap: 12,
             padding: '20px 16px',
             alignItems: 'center',
-            background: esDyj ? 'var(--dyj-red)' : 'transparent',
+            background: esDyj ? 'var(--dyj-red-deep)' : 'transparent',
             color: esDyj ? 'var(--dyj-white)' : 'var(--dyj-ink)',
             borderBottom: '1px solid rgba(0,0,0,0.08)',
           }}>
@@ -133,7 +133,7 @@ function GrupoTabla({ grupo, equipos }) {
             <span className="mono">{t.p}</span>
             <span className="mono">{t.gf}</span>
             <span className="mono">{t.gc}</span>
-            <span className="display" style={{ fontSize: 28, textAlign: 'right', color: esDyj ? 'var(--dyj-gold)' : 'var(--dyj-red)' }}>{t.pts}</span>
+            <span className="display" style={{ fontSize: 28, textAlign: 'right', color: esDyj ? 'var(--dyj-gold)' : 'var(--dyj-red-deep)' }}>{t.pts}</span>
           </div>
         );
       })}

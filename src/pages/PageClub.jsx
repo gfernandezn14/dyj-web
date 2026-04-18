@@ -34,7 +34,7 @@ export default function PageClub() {
               lineHeight: 0.95, letterSpacing: '-0.01em',
               color: 'var(--dyj-ink)', textTransform: 'uppercase',
             }}>
-              De un grupo<br />de amigos a<br /><span style={{ color: 'var(--dyj-red)' }}>un club</span>
+              De un grupo<br />de amigos a<br /><span style={{ color: 'var(--dyj-red-deep)' }}>un club</span>
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -70,7 +70,7 @@ export default function PageClub() {
         <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 24 }}>
           {d.valores.map((v) => (
             <div key={v.n} style={{ borderTop: '3px solid var(--dyj-red)', paddingTop: 20 }}>
-              <div className="display" style={{ fontSize: 24, color: 'var(--dyj-red)', opacity: 0.7 }}>{v.n}</div>
+              <div className="display" style={{ fontSize: 24, color: 'var(--dyj-red-deep)', opacity: 0.7 }}>{v.n}</div>
               <div className="display" style={{ fontSize: 44, marginTop: 12, lineHeight: 1 }}>{v.titulo}</div>
               <div style={{ marginTop: 14, fontSize: 14, lineHeight: 1.55, opacity: 0.8 }}>{v.texto}</div>
             </div>

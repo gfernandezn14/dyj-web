@@ -6,7 +6,7 @@ function GrupoTabla({ grupo, equipos }) {
   return (
     <div style={{ marginBottom: 36 }}>
       <div style={{ display: 'flex', alignItems: 'baseline', gap: 12, padding: '0 4px 14px', flexWrap: 'wrap' }}>
-        <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--dyj-red)' }}>
+        <div className="display" style={{ fontSize: 36, lineHeight: 1, color: 'var(--dyj-red-deep)' }}>
           Grupo {grupo}
         </div>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em', opacity: 0.55, textTransform: 'uppercase' }}>
@@ -35,7 +35,7 @@ function GrupoTabla({ grupo, equipos }) {
                 gap: 8,
                 padding: '14px 4px',
                 alignItems: 'center',
-                background: esDyj ? 'var(--dyj-red)' : 'transparent',
+                background: esDyj ? 'var(--dyj-red-deep)' : 'transparent',
                 color: esDyj ? 'var(--dyj-white)' : 'var(--dyj-ink)',
                 borderBottom: '1px solid rgba(0,0,0,0.08)',
               }}>
@@ -47,7 +47,7 @@ function GrupoTabla({ grupo, equipos }) {
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>{t.p}</span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>{t.gf}</span>
                 <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11 }}>{t.gc}</span>
-                <span style={{ fontFamily: 'var(--font-display)', fontSize: 22, textAlign: 'right', color: esDyj ? 'var(--dyj-gold)' : 'var(--dyj-red)' }}>{t.pts}</span>
+                <span style={{ fontFamily: 'var(--font-display)', fontSize: 22, textAlign: 'right', color: esDyj ? 'var(--dyj-gold)' : 'var(--dyj-red-deep)' }}>{t.pts}</span>
               </div>
             );
           })}
@@ -109,7 +109,7 @@ export default function MPartidos() {
           )}
 
           {tab === 'resultados' && d.resultadosRecientes.map((r, i) => {
-            const accentBg = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-red)' : 'rgba(0,0,0,0.3)';
+            const accentBg = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-red-deep)' : 'rgba(0,0,0,0.3)';
             const accentFg = r.resultado === 'E' ? 'var(--dyj-white)' : 'var(--dyj-ink)';
             return (
               <div key={i} style={{

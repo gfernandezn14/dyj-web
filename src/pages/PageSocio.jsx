@@ -71,7 +71,7 @@ export default function PageSocio() {
         <div className="reveal" style={{ maxWidth: 1400, marginBottom: 60 }}>
           <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Beneficios</div>
           <div className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 84px)', lineHeight: 0.95, letterSpacing: '-0.01em', textTransform: 'uppercase', maxWidth: 900 }}>
-            Lo que recibes<br /><span style={{ color: 'var(--dyj-red)' }}>por ser parte</span>
+            Lo que recibes<br /><span style={{ color: 'var(--dyj-red-deep)' }}>por ser parte</span>
           </div>
         </div>
         <ul className="reveal" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 0, maxWidth: 1100 }}>
@@ -105,10 +105,10 @@ export default function PageSocio() {
                 padding: 32,
                 background: esHonor ? 'var(--dyj-ink)' : 'transparent',
                 color: esHonor ? 'var(--dyj-white)' : 'var(--dyj-ink)',
-                borderTop: '4px solid ' + (esHonor ? 'var(--dyj-gold)' : 'var(--dyj-red)'),
+                borderTop: '4px solid ' + (esHonor ? 'var(--dyj-gold)' : 'var(--dyj-red-deep)'),
                 display: 'flex', flexDirection: 'column', gap: 16,
               }}>
-                <div className="mono" style={{ opacity: 0.7, letterSpacing: '0.18em', fontSize: 11, textTransform: 'uppercase', color: esHonor ? 'var(--dyj-gold)' : 'var(--dyj-red)' }}>
+                <div className="mono" style={{ opacity: 0.7, letterSpacing: '0.18em', fontSize: 11, textTransform: 'uppercase', color: esHonor ? 'var(--dyj-gold)' : 'var(--dyj-red-deep)' }}>
                   Socio {a.tier}
                 </div>
                 <div className="display" style={{ fontSize: 64, lineHeight: 0.9, color: esHonor ? 'var(--dyj-gold)' : 'var(--dyj-ink)' }}>
@@ -137,7 +137,7 @@ export default function PageSocio() {
           <div className="reveal">
             {sent ? (
               <div style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
-                <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red)', lineHeight: 1 }}>¡Bienvenido!</div>
+                <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red-deep)', lineHeight: 1 }}>¡Bienvenido!</div>
                 <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 hrs</div>
                 <button className="btn btn--ghost-dark" style={{ marginTop: 32 }}
                   onClick={() => { setSent(false); setForm(EMPTY); }}>

@@ -22,7 +22,7 @@ export default function MClub() {
 
       <section className="m-sec">
         <MSectionHeader eyebrow="Nuestra historia">
-          De un grupo<br />de amigos<br />a <span style={{ color: 'var(--dyj-red)' }}>un club</span>
+          De un grupo<br />de amigos<br />a <span style={{ color: 'var(--dyj-red-deep)' }}>un club</span>
         </MSectionHeader>
         <div className="reveal" style={{ display: 'flex', flexDirection: 'column', gap: 18, marginTop: 28 }}>
           {NARRATIVA.map((parrafo, i) => (

@@ -31,7 +31,7 @@ export default function MUnete() {
     <>
       <MPageHeader
         kicker="05 · Únete"
-        title={<>Queremos verte<br /><span style={{ color: 'var(--dyj-red)' }}>en la cancha</span></>}
+        title={<>Queremos verte<br /><span style={{ color: 'var(--dyj-red-deep)' }}>en la cancha</span></>}
         sub="Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Rellena esto y te escribimos para conocerte."
         bgImg="/assets/jugador.jpg"
       />
@@ -54,7 +54,7 @@ export default function MUnete() {
       <section className="m-sec m-sec--bone">
         {sent ? (
           <div style={{ border: '2px solid var(--dyj-ink)', padding: 32, textAlign: 'center' }}>
-            <div className="m-title" style={{ color: 'var(--dyj-red)', fontSize: 48, marginBottom: 10 }}>¡Listo!</div>
+            <div className="m-title" style={{ color: 'var(--dyj-red-deep)', fontSize: 48, marginBottom: 10 }}>¡Listo!</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.22em' }}>
               Te escribimos en las próximas 48 hrs.
             </div>

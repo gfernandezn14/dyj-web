@@ -75,7 +75,7 @@ function FichaModal({ jugador, onClose }) {
             ].map((x, i) => (
               <div key={i}>
                 <div className="mono" style={{ opacity: 0.55, fontSize: 10 }}>{x[0]}</div>
-                <div className="display" style={{ fontSize: 44, lineHeight: 1, marginTop: 4, color: 'var(--dyj-red)' }}>{x[1]}</div>
+                <div className="display" style={{ fontSize: 44, lineHeight: 1, marginTop: 4, color: 'var(--dyj-red-deep)' }}>{x[1]}</div>
               </div>
             ))}
           </div>
@@ -107,7 +107,7 @@ export default function PagePlantel() {
         <div style={{ position: 'relative', zIndex: 2 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>02 · El plantel</div>
           <div className="display" style={{ fontSize: 'clamp(96px, 14vw, 240px)', lineHeight: 0.95, letterSpacing: '-0.01em' }}>
-            Los que<br /><span style={{ color: 'var(--dyj-red)' }}>juegan</span>
+            Los que<br /><span style={{ color: 'var(--dyj-red-deep)' }}>juegan</span>
           </div>
           <div style={{ marginTop: 40, maxWidth: 600, fontSize: 18, opacity: 0.85, lineHeight: 1.55 }}>
             {d.plantel.length} jugadores. Cada uno con su historia, su número y su forma propia de dejarlo todo en la cancha.
@@ -134,7 +134,7 @@ export default function PagePlantel() {
                 opacity: 0.08,
               }} />
               <div style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'space-between' }}>
-                <div className="display" style={{ fontSize: 120, lineHeight: 0.8, color: 'var(--dyj-red)' }}>{j.num}</div>
+                <div className="display" style={{ fontSize: 120, lineHeight: 0.8, color: 'var(--dyj-red-deep)' }}>{j.num}</div>
                 <div className="mono" style={{ fontSize: 10, opacity: 0.5, writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}>CSD · DyJ</div>
               </div>
               <div style={{ position: 'relative', zIndex: 2 }}>
