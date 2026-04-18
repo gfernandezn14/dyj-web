@@ -93,7 +93,7 @@ export default function PageUnete() {
                   <FormField label="Email" type="email" value={form.email} onChange={onChange('email')} required />
                   <FormField label="Edad" type="number" value={form.edad} onChange={onChange('edad')} required />
                 </div>
-                <FormField label="Posición en la que jugás" value={form.posicion} onChange={onChange('posicion')} placeholder="Arquero, defensa, volante, delantero…" />
+                <FormField label="Posición en la que juegas" value={form.posicion} onChange={onChange('posicion')} placeholder="Arquero, defensa, volante, delantero…" />
                 <FormField label="Años jugando" value={form.experiencia} onChange={onChange('experiencia')} placeholder="Donde jugaste, qué te gusta, etc." textarea />
                 <FormField label="¿Algo que quieras contarnos?" value={form.mensaje} onChange={onChange('mensaje')} textarea />
                 <button type="submit" className="btn btn--red hoverable" style={{ alignSelf: 'flex-start', marginTop: 10 }}>
