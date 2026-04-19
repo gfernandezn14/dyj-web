@@ -10,7 +10,7 @@ function GrupoTabla({ grupo, equipos }) {
           Grupo {grupo}
         </div>
         <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em', opacity: 0.55, textTransform: 'uppercase' }}>
-          1ª Fase · 2º Fecha jugada
+          1ª Fase · 2ª Fecha jugada
         </div>
       </div>
       <div style={{ overflowX: 'auto', WebkitOverflowScrolling: 'touch', margin: '0 -20px', padding: '0 20px' }}>
@@ -81,12 +81,12 @@ export default function MPartidos() {
           ))}
         </div>
 
-        <div style={{ marginTop: 24 }}>
+        <div style={{ marginTop: 24 }} key={tab} className="m-tabs-panel">
           {tab === 'proximos' && (
             <>
               <div className="m-match m-match--next">
                 <div className="m-match__top">
-                  <span>{p.liga}</span>
+                  <span>{p.liga} · {p.jornada}</span>
                   <span>{p.fecha} · {p.hora}</span>
                 </div>
                 <div className="m-match__teams">

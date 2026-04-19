@@ -12,19 +12,28 @@ function Stat({ label, val }) {
 }
 
 function MFicha({ jugador, onClose }) {
+  const [closing, setClosing] = useState(false);
+
+  const requestClose = () => {
+    if (closing) return;
+    setClosing(true);
+    setTimeout(onClose, 240);
+  };
+
   useEffect(() => {
     document.body.classList.add('no-scroll');
-    const k = (e) => e.key === 'Escape' && onClose();
+    const k = (e) => e.key === 'Escape' && requestClose();
     window.addEventListener('keydown', k);
     return () => {
       document.body.classList.remove('no-scroll');
       window.removeEventListener('keydown', k);
     };
-  }, [onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div className="m-ficha-overlay">
-      <button className="m-ficha__close" onClick={onClose}>CERRAR ✕</button>
+    <div className={'m-ficha-overlay ' + (closing ? 'is-closing' : '')}>
+      <button className="m-ficha__close" onClick={requestClose}>CERRAR ✕</button>
       <div className="m-ficha__hero">
         <div className="m-ficha__top">
           <img src="/assets/escudo.png" alt="DyJ" style={{ width: 40, position: 'relative' }} />

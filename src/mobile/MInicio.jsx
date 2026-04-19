@@ -21,7 +21,7 @@ export default function MInicio({ setPage }) {
         }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <span className="m-eyebrow" style={{ color: 'rgba(255,255,255,0.85)' }}>
-            Próxima fecha · {p.liga}
+            Próxima fecha · {p.liga} · {p.jornada}
           </span>
           <h2 className="m-title">Nos vemos<br />en la cancha</h2>
 
@@ -158,9 +158,9 @@ export default function MInicio({ setPage }) {
         <div className="m-manifiesto__inner reveal">
           <span className="m-eyebrow" style={{ color: 'var(--dyj-gold)' }}>Manifiesto</span>
           <div className="m-manifiesto__quote">
-            Empezamos siendo amigos.<br />
-            Seguimos siendo equipo.<br />
-            Hoy <span style={{ color: 'var(--dyj-gold)' }}>somos club</span>.
+            Empezamos siendo amigos<br />
+            Seguimos siendo equipo<br />
+            Hoy <span style={{ color: 'var(--dyj-gold)' }}>somos club</span>
           </div>
           <a href="#club" className="m-btn m-btn--ghost-light"
              style={{ marginTop: 28, display: 'block' }}

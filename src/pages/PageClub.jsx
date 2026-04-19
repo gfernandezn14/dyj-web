@@ -16,7 +16,7 @@ export default function PageClub() {
         <div className="grain grain--light" />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <div className="mono" style={{ opacity: 0.85, marginBottom: 24 }}>01 · El club</div>
-          <div className="display" style={{ fontSize: 'clamp(72px, 11vw, 200px)', lineHeight: 0.95, letterSpacing: '-0.01em' }}>
+          <div className="display" style={{ fontSize: 'clamp(72px, 11vw, 200px)', lineHeight: 0.95 }}>
             Conoce nuestra<br />historia
           </div>
         </div>
@@ -31,7 +31,7 @@ export default function PageClub() {
             <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 24 }}>Nuestra historia</div>
             <div className="display" style={{
               fontSize: 'clamp(56px, 7vw, 112px)',
-              lineHeight: 0.95, letterSpacing: '-0.01em',
+              lineHeight: 0.95,
               color: 'var(--dyj-ink)', textTransform: 'uppercase',
             }}>
               De un grupo<br />de amigos a<br /><span style={{ color: 'var(--dyj-red)' }}>un club</span>
@@ -70,7 +70,7 @@ export default function PageClub() {
         <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 24 }}>
           {d.valores.map((v) => (
             <div key={v.n} style={{ borderTop: '3px solid var(--dyj-red)', paddingTop: 20 }}>
-              <div className="display" style={{ fontSize: 24, color: 'var(--dyj-red)', opacity: 0.7 }}>{v.n}</div>
+              <div className="display" style={{ fontSize: 24, color: 'var(--dyj-red)' }}>{v.n}</div>
               <div className="display" style={{ fontSize: 44, marginTop: 12, lineHeight: 1 }}>{v.titulo}</div>
               <div style={{ marginTop: 14, fontSize: 14, lineHeight: 1.55, opacity: 0.8 }}>{v.texto}</div>
             </div>

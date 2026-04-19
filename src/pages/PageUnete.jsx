@@ -52,11 +52,11 @@ export default function PageUnete() {
         <div className="grain grain--light" />
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>05 · Únete</div>
-          <div className="display" style={{ fontSize: 'clamp(72px, 10vw, 180px)', lineHeight: 0.95, letterSpacing: '-0.01em' }}>
+          <div className="display" style={{ fontSize: 'clamp(72px, 10vw, 180px)', lineHeight: 0.95 }}>
             Queremos verte<br /><span style={{ color: 'var(--dyj-red)' }}>en la cancha</span>
           </div>
           <div style={{ marginTop: 40, maxWidth: 700, fontSize: 20, opacity: 0.9, lineHeight: 1.5 }}>
-            Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Rellena esto y te escribimos para conocerte.
+            Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Llena esto y te escribimos para conocerte.
           </div>
         </div>
       </section>
@@ -78,23 +78,23 @@ export default function PageUnete() {
 
           <div className="reveal">
             {sent ? (
-              <div style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
+              <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
                 <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red)', lineHeight: 1 }}>¡Listo!</div>
-                <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 hrs.</div>
+                <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 horas</div>
                 <button className="btn btn--ghost-dark" style={{ marginTop: 32 }}
                   onClick={() => { setSent(false); setForm(EMPTY); }}>
                   Enviar otro
                 </button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <form className="m-fade-in" onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                 <FormField label="Nombre completo" value={form.nombre} onChange={onChange('nombre')} required />
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
                   <FormField label="Email" type="email" value={form.email} onChange={onChange('email')} required />
                   <FormField label="Edad" type="number" value={form.edad} onChange={onChange('edad')} required />
                 </div>
                 <FormField label="Posición en la que juegas" value={form.posicion} onChange={onChange('posicion')} placeholder="Arquero, defensa, volante, delantero…" />
-                <FormField label="Años jugando" value={form.experiencia} onChange={onChange('experiencia')} placeholder="Donde jugaste, qué te gusta, etc." textarea />
+                <FormField label="Tu historia futbolera" value={form.experiencia} onChange={onChange('experiencia')} placeholder="Dónde jugaste, qué te gusta, cuánto tiempo llevas" textarea />
                 <FormField label="¿Algo que quieras contarnos?" value={form.mensaje} onChange={onChange('mensaje')} textarea />
                 <button type="submit" className="btn btn--red hoverable" style={{ alignSelf: 'flex-start', marginTop: 10 }}>
                   Enviar postulación →

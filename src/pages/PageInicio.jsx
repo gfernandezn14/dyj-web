@@ -23,7 +23,7 @@ function BlockProximoPartido({ setPage }) {
 
       <div className="reveal" style={{ position: 'relative', zIndex: 2, display: 'grid', gridTemplateColumns: '1fr', gap: 0, maxWidth: 1400 }}>
         <div className="mono" style={{ opacity: 0.85, marginBottom: 16, letterSpacing: '0.22em' }}>
-          Próxima fecha · {p.liga}
+          Próxima fecha · {p.liga} · {p.jornada}
         </div>
         <div className="display" style={{ fontSize: 'clamp(72px, 9vw, 156px)', lineHeight: 0.95 }}>
           Nos vemos<br />en la cancha
@@ -198,9 +198,9 @@ function BlockManifiesto({ setPage }) {
       <div className="reveal" style={{ position: 'relative', zIndex: 2, maxWidth: 1200 }}>
         <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>Manifiesto</div>
         <div className="display" style={{ fontSize: 'clamp(36px, 4.4vw, 68px)', lineHeight: 1.15, fontWeight: 400 }}>
-          Empezamos siendo amigos.<br />
-          Seguimos siendo equipo.<br />
-          Hoy <span style={{ color: 'var(--dyj-gold)' }}>somos club</span>.
+          Empezamos siendo amigos<br />
+          Seguimos siendo equipo<br />
+          Hoy <span style={{ color: 'var(--dyj-gold)' }}>somos club</span>
         </div>
         <a href="#club" className="btn btn--ghost-light hoverable" style={{ marginTop: 48 }}
           onClick={(e) => { e.preventDefault(); setPage('club'); }}>

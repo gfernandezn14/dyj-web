@@ -2,24 +2,33 @@ import { useEffect, useState } from 'react';
 import { DYJ_DATA } from '../data.js';
 
 function FichaModal({ jugador, onClose }) {
+  const [closing, setClosing] = useState(false);
+
+  const requestClose = () => {
+    if (closing) return;
+    setClosing(true);
+    setTimeout(onClose, 200);
+  };
+
   useEffect(() => {
     document.body.classList.add('no-scroll');
-    const k = (e) => e.key === 'Escape' && onClose();
+    const k = (e) => e.key === 'Escape' && requestClose();
     window.addEventListener('keydown', k);
     return () => {
       document.body.classList.remove('no-scroll');
       window.removeEventListener('keydown', k);
     };
-  }, [onClose]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
-    <div style={{
+    <div className={'desktop-ficha-overlay ' + (closing ? 'is-closing' : '')} style={{
       position: 'fixed', inset: 0, zIndex: 150,
       background: 'rgba(11,11,12,0.92)',
       display: 'flex', alignItems: 'center', justifyContent: 'center',
       padding: 32,
-    }} onClick={onClose}>
-      <div onClick={(e) => e.stopPropagation()} style={{
+    }} onClick={requestClose}>
+      <div className="desktop-ficha-panel" onClick={(e) => e.stopPropagation()} style={{
         background: 'var(--dyj-white)', color: 'var(--dyj-ink)',
         maxWidth: 1100, width: '100%',
         maxHeight: '90vh', overflow: 'auto',
@@ -53,7 +62,7 @@ function FichaModal({ jugador, onClose }) {
               <div className="mono" style={{ opacity: 0.55, fontSize: 10 }}>FICHA · JUGADOR</div>
               <div className="display" style={{ fontSize: 64, lineHeight: 0.95, marginTop: 10 }}>{jugador.nombre}</div>
             </div>
-            <button onClick={onClose} className="hoverable" style={{
+            <button onClick={requestClose} className="hoverable" style={{
               background: 'transparent', border: '1.5px solid var(--dyj-ink)',
               padding: '8px 16px', fontFamily: 'var(--font-mono)', fontSize: 11,
               letterSpacing: '0.18em', cursor: 'pointer',
@@ -106,7 +115,7 @@ export default function PagePlantel() {
         }} />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>02 · El plantel</div>
-          <div className="display" style={{ fontSize: 'clamp(96px, 14vw, 240px)', lineHeight: 0.95, letterSpacing: '-0.01em' }}>
+          <div className="display" style={{ fontSize: 'clamp(96px, 14vw, 240px)', lineHeight: 0.95 }}>
             Los que<br /><span style={{ color: 'var(--dyj-red)' }}>juegan</span>
           </div>
           <div style={{ marginTop: 40, maxWidth: 600, fontSize: 18, opacity: 0.85, lineHeight: 1.55 }}>
