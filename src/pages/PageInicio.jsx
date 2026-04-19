@@ -154,7 +154,7 @@ function BlockPlantelPreview({ setPage }) {
           <div>
             <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 16 }}>El plantel</div>
             <div className="display" style={{ fontSize: 'clamp(64px, 9vw, 140px)', lineHeight: 0.95, letterSpacing: '-0.005em' }}>
-              Los que<br />juegan por<br /><span style={{ color: 'var(--dyj-red-deep)' }}>la camiseta</span>
+              Los que<br />juegan por<br /><span style={{ color: 'var(--dyj-red)' }}>la camiseta</span>
             </div>
           </div>
           <a href="#plantel" className="btn btn--ghost-light hoverable" style={{ justifySelf: 'end' }}
@@ -173,7 +173,7 @@ function BlockPlantelPreview({ setPage }) {
               cursor: 'pointer',
             }}
               onClick={() => setPage('plantel')}>
-              <div className="display" style={{ fontSize: 80, lineHeight: 0.8, color: 'var(--dyj-red-deep)' }}>{j.num}</div>
+              <div className="display" style={{ fontSize: 80, lineHeight: 0.8, color: 'var(--dyj-red)' }}>{j.num}</div>
               <div>
                 <div className="mono" style={{ opacity: 0.55, fontSize: 10 }}>{j.pos.toUpperCase()}</div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, marginTop: 4, lineHeight: 1 }}>{j.nombre}</div>

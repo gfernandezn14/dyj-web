@@ -53,7 +53,7 @@ export default function PageUnete() {
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>05 · Únete</div>
           <div className="display" style={{ fontSize: 'clamp(72px, 10vw, 180px)', lineHeight: 0.95 }}>
-            Queremos verte<br /><span style={{ color: 'var(--dyj-red-deep)' }}>en la cancha</span>
+            Queremos verte<br /><span style={{ color: 'var(--dyj-red)' }}>en la cancha</span>
           </div>
           <div style={{ marginTop: 40, maxWidth: 700, fontSize: 20, opacity: 0.9, lineHeight: 1.5 }}>
             Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Rellena esto y te escribimos para conocerte.
@@ -64,12 +64,12 @@ export default function PageUnete() {
       <section style={{ background: 'var(--dyj-white)', padding: '120px 48px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80, maxWidth: 1400 }}>
           <div className="reveal">
-            <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Sobre sumarse</div>
+            <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Sobre sumarse</div>
             <div className="display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1 }}>Lo básico</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '40px 0 0', display: 'flex', flexDirection: 'column', gap: 16 }}>
               {TIPS.map((t, i) => (
                 <li key={i} style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', gap: 16, alignItems: 'baseline', borderBottom: '1px solid rgba(0,0,0,0.1)', paddingBottom: 16 }}>
-                  <span className="mono" style={{ color: 'var(--dyj-red-deep)' }}>{String(i + 1).padStart(2, '0')}</span>
+                  <span className="mono" style={{ color: 'var(--dyj-red)' }}>{String(i + 1).padStart(2, '0')}</span>
                   <span style={{ fontSize: 17, lineHeight: 1.5 }}>{t}</span>
                 </li>
               ))}
@@ -79,7 +79,7 @@ export default function PageUnete() {
           <div className="reveal">
             {sent ? (
               <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
-                <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red-deep)', lineHeight: 1 }}>¡Listo!</div>
+                <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red)', lineHeight: 1 }}>¡Listo!</div>
                 <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 hrs.</div>
                 <button className="btn btn--ghost-dark" style={{ marginTop: 32 }}
                   onClick={() => { setSent(false); setForm(EMPTY); }}>

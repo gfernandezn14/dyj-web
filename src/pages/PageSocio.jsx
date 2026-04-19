@@ -69,9 +69,9 @@ export default function PageSocio() {
 
       <section style={{ background: 'var(--dyj-bone)', padding: '120px 48px' }}>
         <div className="reveal" style={{ maxWidth: 1400, marginBottom: 60 }}>
-          <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Beneficios</div>
+          <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Beneficios</div>
           <div className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 84px)', lineHeight: 0.95, textTransform: 'uppercase', maxWidth: 900 }}>
-            Lo que recibes<br /><span style={{ color: 'var(--dyj-red-deep)' }}>por ser parte</span>
+            Lo que recibes<br /><span style={{ color: 'var(--dyj-red)' }}>por ser parte</span>
           </div>
         </div>
         <ul className="reveal" style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: 0, maxWidth: 1100 }}>
@@ -83,7 +83,7 @@ export default function PageSocio() {
               borderBottom: '1px solid rgba(0,0,0,0.12)',
               borderTop: i === 0 ? '1px solid rgba(0,0,0,0.12)' : 'none',
             }}>
-              <span className="mono" style={{ color: 'var(--dyj-red-deep)' }}>{String(i + 1).padStart(2, '0')}</span>
+              <span className="mono" style={{ color: 'var(--dyj-red)' }}>{String(i + 1).padStart(2, '0')}</span>
               <span style={{ fontSize: 18, lineHeight: 1.5 }}>{b}</span>
             </li>
           ))}
@@ -92,7 +92,7 @@ export default function PageSocio() {
 
       <section style={{ background: 'var(--dyj-white)', padding: '120px 48px' }}>
         <div className="reveal" style={{ maxWidth: 1400, marginBottom: 60 }}>
-          <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Aportes</div>
+          <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Aportes</div>
           <div className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 84px)', lineHeight: 0.95, textTransform: 'uppercase' }}>
             Tres formas<br />de sumarse
           </div>
@@ -125,7 +125,7 @@ export default function PageSocio() {
       <section style={{ background: 'var(--dyj-bone)', padding: '120px 48px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: 80, maxWidth: 1400 }}>
           <div className="reveal">
-            <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Postulación</div>
+            <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Postulación</div>
             <div className="display" style={{ fontSize: 'clamp(40px, 5vw, 72px)', lineHeight: 1, textTransform: 'uppercase' }}>
               Quiero<br />ser socio
             </div>
@@ -137,7 +137,7 @@ export default function PageSocio() {
           <div className="reveal">
             {sent ? (
               <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
-                <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red-deep)', lineHeight: 1 }}>¡Bienvenido!</div>
+                <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red)', lineHeight: 1 }}>¡Bienvenido!</div>
                 <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 hrs</div>
                 <button className="btn btn--ghost-dark" style={{ marginTop: 32 }}
                   onClick={() => { setSent(false); setForm(EMPTY); }}>

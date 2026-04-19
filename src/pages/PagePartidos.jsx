@@ -98,7 +98,7 @@ function GrupoTabla({ grupo, equipos }) {
         display: 'flex', alignItems: 'baseline', gap: 16,
         padding: '0 16px 16px',
       }}>
-        <div className="display" style={{ fontSize: 56, lineHeight: 1, color: 'var(--dyj-red-deep)' }}>Grupo {grupo}</div>
+        <div className="display" style={{ fontSize: 56, lineHeight: 1, color: 'var(--dyj-red)' }}>Grupo {grupo}</div>
         <div className="mono" style={{ opacity: 0.6, fontSize: 10 }}>1ª FASE · 2º FECHA JUGADA</div>
       </div>
       <div style={{

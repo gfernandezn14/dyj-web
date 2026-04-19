@@ -28,13 +28,13 @@ export default function PageClub() {
           alignItems: 'start', marginBottom: 100, maxWidth: 1400,
         }}>
           <div>
-            <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 24 }}>Nuestra historia</div>
+            <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 24 }}>Nuestra historia</div>
             <div className="display" style={{
               fontSize: 'clamp(56px, 7vw, 112px)',
               lineHeight: 0.95,
               color: 'var(--dyj-ink)', textTransform: 'uppercase',
             }}>
-              De un grupo<br />de amigos a<br /><span style={{ color: 'var(--dyj-red-deep)' }}>un club</span>
+              De un grupo<br />de amigos a<br /><span style={{ color: 'var(--dyj-red)' }}>un club</span>
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
@@ -70,7 +70,7 @@ export default function PageClub() {
         <div className="reveal" style={{ display: 'grid', gridTemplateColumns: 'repeat(5, 1fr)', gap: 24 }}>
           {d.valores.map((v) => (
             <div key={v.n} style={{ borderTop: '3px solid var(--dyj-red)', paddingTop: 20 }}>
-              <div className="display" style={{ fontSize: 24, color: 'var(--dyj-red-deep)' }}>{v.n}</div>
+              <div className="display" style={{ fontSize: 24, color: 'var(--dyj-red)' }}>{v.n}</div>
               <div className="display" style={{ fontSize: 44, marginTop: 12, lineHeight: 1 }}>{v.titulo}</div>
               <div style={{ marginTop: 14, fontSize: 14, lineHeight: 1.55, opacity: 0.8 }}>{v.texto}</div>
             </div>
@@ -81,7 +81,7 @@ export default function PageClub() {
       <section style={{ background: 'var(--dyj-white)', padding: '140px 48px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 80 }}>
           <div className="reveal">
-            <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Directiva</div>
+            <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Directiva</div>
             <div className="display" style={{ fontSize: 'clamp(48px, 6vw, 84px)', lineHeight: 0.95, marginBottom: 40 }}>Quienes<br />mueven el club</div>
             {d.directiva.map((p, i) => (
               <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 24, padding: '18px 0', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
@@ -93,7 +93,7 @@ export default function PageClub() {
             ))}
           </div>
           <div className="reveal">
-            <div className="mono" style={{ color: 'var(--dyj-red-deep)', marginBottom: 16 }}>Cuerpo técnico</div>
+            <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Cuerpo técnico</div>
             <div className="display" style={{ fontSize: 'clamp(48px, 6vw, 84px)', lineHeight: 0.95, marginBottom: 40 }}>Los que<br />preparan el equipo</div>
             {d.cuerpoTecnico.map((p, i) => (
               <div key={i} style={{ padding: '18px 0', borderBottom: '1px solid rgba(0,0,0,0.1)' }}>
