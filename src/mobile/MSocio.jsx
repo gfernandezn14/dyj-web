@@ -93,7 +93,7 @@ export default function MSocio() {
           Te respondemos en 48 horas con los datos para coordinar el aporte y entregarte tu carnet. Sin contratos, sin letra chica.
         </div>
         {sent ? (
-          <div style={{ border: '2px solid var(--dyj-ink)', padding: 32, marginTop: 24, textAlign: 'center' }}>
+          <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 32, marginTop: 24, textAlign: 'center' }}>
             <div className="m-title m-red-text" style={{ fontSize: 48, marginBottom: 10 }}>¡Bienvenido!</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.22em' }}>
               Te escribimos en las próximas 48 hrs
@@ -104,7 +104,7 @@ export default function MSocio() {
             </button>
           </div>
         ) : (
-          <form className="m-form" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
+          <form className="m-form m-fade-in" onSubmit={(e) => { e.preventDefault(); setSent(true); }}>
             <Field label="Nombre completo" val={form.nombre} on={ch('nombre')} req />
             <Field label="Email" type="email" val={form.email} on={ch('email')} req />
             <Field label="Teléfono" val={form.telefono} on={ch('telefono')} placeholder="+56 9 ..." />

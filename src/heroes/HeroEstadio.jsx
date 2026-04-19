@@ -52,7 +52,6 @@ export default function HeroEstadio({ setPage }) {
         <div className="display" style={{
           fontSize: 'clamp(48px, 7.2vw, 120px)',
           lineHeight: 0.95,
-          letterSpacing: '-0.01em',
           maxWidth: '72%',
         }}>
           {titleLines.map((l, i) => (
@@ -94,7 +93,7 @@ export default function HeroEstadio({ setPage }) {
           {d.valores.map((v, i) => (
             <span key={v.n} style={{ display: 'inline-flex', alignItems: 'center', gap: 10 }}>
               <span style={{ color: 'var(--dyj-gold)', fontSize: 10 }}>{v.n}</span>
-              <span style={{ fontSize: 11, letterSpacing: '0.32em', fontWeight: 600 }}>{v.titulo.toUpperCase()}</span>
+              <span style={{ fontSize: 11, letterSpacing: '0.32em', fontWeight: 500 }}>{v.titulo.toUpperCase()}</span>
               {i < d.valores.length - 1 && <span style={{ opacity: 0.5, marginLeft: 14 }}>·</span>}
             </span>
           ))}

@@ -53,7 +53,7 @@ export default function MUnete() {
 
       <section className="m-sec m-sec--bone">
         {sent ? (
-          <div style={{ border: '2px solid var(--dyj-ink)', padding: 32, textAlign: 'center' }}>
+          <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 32, textAlign: 'center' }}>
             <div className="m-title m-red-text" style={{ fontSize: 48, marginBottom: 10 }}>¡Listo!</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.22em' }}>
               Te escribimos en las próximas 48 hrs.
@@ -64,7 +64,7 @@ export default function MUnete() {
             </button>
           </div>
         ) : (
-          <form className="m-form" onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ marginTop: 0 }}>
+          <form className="m-form m-fade-in" onSubmit={(e) => { e.preventDefault(); setSent(true); }} style={{ marginTop: 0 }}>
             <Field label="Nombre completo" val={form.nombre} on={ch('nombre')} req />
             <Field label="Email" type="email" val={form.email} on={ch('email')} req />
             <Field label="Edad" type="number" val={form.edad} on={ch('edad')} req />

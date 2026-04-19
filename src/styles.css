@@ -18,6 +18,11 @@
   --font-display: 'Anton', 'Oswald', 'Bebas Neue', sans-serif;
   --font-sans: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', 'IBM Plex Mono', ui-monospace, monospace;
+
+  /* Curvas de easing (Emil). Evitar ease/ease-in defaults en UI. */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 /* Anti Samsung Internet "Force Dark": declaramos soporte dark con vars idénticas
@@ -109,7 +114,7 @@ body {
   position: absolute; left: 0; right: 0; bottom: 0;
   height: 2px; background: currentColor;
   transform: scaleX(0); transform-origin: left;
-  transition: transform 0.3s;
+  transition: transform 220ms var(--ease-out);
 }
 .nav__link:hover::after,
 .nav__link.is-active::after { transform: scaleX(1); }
@@ -123,9 +128,10 @@ body {
   color: var(--dyj-white) !important;
   padding: 12px 22px;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 140ms var(--ease-out);
   border: 1.5px solid var(--dyj-red);
 }
+.nav__cta:active { transform: scale(0.97); }
 .nav__cta:hover { background: var(--dyj-red); border-color: var(--dyj-red); }
 .nav__cta--ghost {
   background: transparent;
@@ -154,8 +160,9 @@ body {
   color: inherit;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  transition: background-color 160ms ease, color 160ms ease, border-color 160ms ease, transform 140ms var(--ease-out);
 }
+.btn:active { transform: scale(0.97); }
 .btn--red { background: var(--dyj-red); border-color: var(--dyj-red); color: var(--dyj-white); }
 .btn--red:hover { background: var(--dyj-red); border-color: var(--dyj-red); }
 .btn--ghost-light { color: var(--dyj-white); border-color: var(--dyj-white); }
@@ -204,9 +211,24 @@ body {
 .no-scroll { overflow: hidden; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
 
+/* Feedback de press global para elementos pulsables con .hoverable
+   (cards de plantel desktop/inicio, cards de resultado, tabs desktop) */
+.hoverable { transition: transform 140ms var(--ease-out); }
+.hoverable:active { transform: scale(0.98); }
+
 /* Scroll reveal */
-.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 450ms var(--ease-out), transform 450ms var(--ease-out);
+}
 .reveal.is-in { opacity: 1; transform: translateY(0); }
+/* Stagger suave cuando varios .reveal entran a la vez (hermanos) */
+.reveal + .reveal { transition-delay: 40ms; }
+.reveal + .reveal + .reveal { transition-delay: 80ms; }
+.reveal + .reveal + .reveal + .reveal { transition-delay: 120ms; }
+.reveal + .reveal + .reveal + .reveal + .reveal { transition-delay: 160ms; }
+.reveal + .reveal + .reveal + .reveal + .reveal + .reveal { transition-delay: 200ms; }
 
 /* Burger button (oculto en desktop) */
 .nav__burger {
@@ -226,7 +248,7 @@ body {
   width: 24px;
   height: 2px;
   background: currentColor;
-  transition: transform 0.25s, opacity 0.25s;
+  transition: transform 220ms var(--ease-out), opacity 160ms var(--ease-out);
 }
 .nav__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav__burger.is-open span:nth-child(2) { opacity: 0; }
@@ -240,8 +262,8 @@ body {
   color: var(--dyj-white);
   opacity: 0;
   pointer-events: none;
-  transform: translateY(-12px);
-  transition: opacity 0.25s, transform 0.25s;
+  transform: translateY(-8px);
+  transition: opacity 180ms var(--ease-out), transform 200ms var(--ease-out);
   display: flex; align-items: center; justify-content: center;
   padding: 80px 24px 40px;
 }
@@ -286,7 +308,7 @@ body {
   position: absolute;
   left: 10px; right: 10px; height: 2px;
   background: currentColor;
-  transition: transform 0.3s, top 0.3s, opacity 0.2s;
+  transition: transform 220ms var(--ease-out), top 220ms var(--ease-out), opacity 160ms var(--ease-out);
 }
 .nav__hamburger span:nth-child(1) { top: 14px; }
 .nav__hamburger span:nth-child(2) { top: 21px; }
@@ -312,7 +334,7 @@ body {
     transform: translateY(-100%);
     opacity: 1;
     pointer-events: none;
-    transition: transform 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+    transition: transform 320ms var(--ease-drawer);
     display: flex; flex-direction: column;
     overflow-y: auto;
     align-items: stretch;
@@ -361,7 +383,9 @@ body {
     display: flex; justify-content: space-between; align-items: center;
     font-family: var(--font-display);
     font-size: 32px;
+    transition: transform 140ms var(--ease-out);
   }
+  .nav__overlay-cta:active { transform: scale(0.98); }
   .nav__overlay-cta--ghost { background: transparent; border: 1.5px solid var(--dyj-white); }
   .nav__overlay-cta .arrow { font-size: 28px; }
   .nav__overlay-foot {
@@ -394,7 +418,7 @@ body {
 .m-hero-estadio__bg { position: absolute; inset: 0; background: url('/assets/juego.jpg') center/cover; }
 .m-hero-estadio__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 30%, rgba(0,0,0,0.3) 55%, rgba(0,0,0,0.92) 100%); }
 .m-hero-estadio__top { position: absolute; top: 90px; left: 20px; right: 20px; display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; opacity: 0.9; }
-.m-hero-estadio__title { position: absolute; left: 20px; right: 20px; bottom: 130px; font-family: var(--font-display); font-size: 72px; line-height: 0.88; letter-spacing: -0.005em; }
+.m-hero-estadio__title { position: absolute; left: 20px; right: 20px; bottom: 130px; font-family: var(--font-display); font-size: 72px; line-height: 0.95; letter-spacing: -0.005em; }
 .m-hero-estadio__title span { color: var(--dyj-gold); }
 .m-hero-estadio__cta { position: absolute; left: 20px; right: 20px; bottom: 32px; display: flex; flex-direction: column; gap: 10px; }
 
@@ -406,7 +430,7 @@ body {
 
 .m-eyebrow { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--dyj-red); display: block; margin-bottom: 14px; }
 .m-sec--ink .m-eyebrow, .m-sec--red .m-eyebrow { color: var(--dyj-gold); }
-.m-title { font-family: var(--font-display); font-size: 56px; line-height: 0.92; letter-spacing: -0.005em; margin: 0; }
+.m-title { font-family: var(--font-display); font-size: 56px; line-height: 0.95; letter-spacing: -0.005em; margin: 0; }
 .m-title--big { font-size: 72px; }
 .m-title--xl { font-size: 88px; }
 .m-title span.red { color: var(--dyj-red); }
@@ -439,7 +463,15 @@ body {
 .m-result-card__tag { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; padding-top: 8px; border-top: 1px solid currentColor; opacity: 0.8; }
 
 /* Cards de jugador */
-.m-player-card { aspect-ratio: 3/4; background: var(--dyj-bone); padding: 16px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; cursor: pointer; }
+.m-player-card {
+  aspect-ratio: 3/4;
+  background: var(--dyj-bone);
+  padding: 16px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  position: relative; overflow: hidden; cursor: pointer;
+  transition: transform 140ms var(--ease-out);
+}
+.m-player-card:active { transform: scale(0.98); }
 .m-player-card::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, var(--dyj-red) 0 20px, transparent 20px 40px); opacity: 0.07; }
 .m-player-card__num { font-family: var(--font-display); font-size: 88px; line-height: 0.8; color: var(--dyj-red); position: relative; }
 .m-player-card__body { position: relative; }
@@ -524,8 +556,23 @@ body {
 
 /* Tabs */
 .m-tabs { display: flex; gap: 0; border-bottom: 2px solid var(--dyj-ink); overflow-x: auto; }
-.m-tabs__btn { padding: 14px 20px; background: transparent; border: none; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; white-space: nowrap; color: var(--dyj-ink); }
+.m-tabs__btn {
+  padding: 14px 20px; background: transparent; border: none;
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase;
+  cursor: pointer; white-space: nowrap; color: var(--dyj-ink);
+  transition: background-color 140ms ease, color 140ms ease, transform 140ms var(--ease-out);
+}
+.m-tabs__btn:active { transform: scale(0.98); }
 .m-tabs__btn.is-active { background: var(--dyj-ink); color: var(--dyj-white); }
+
+.page-tabs__btn:active { transform: scale(0.98); }
+
+/* Crossfade de panel de tabs al cambiar */
+.m-tabs-panel { animation: mTabsFadeIn 180ms var(--ease-out); }
+@keyframes mTabsFadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 
 /* Galería stacked */
 .m-gallery { display: flex; flex-direction: column; gap: 4px; }
@@ -550,7 +597,9 @@ body {
   width: 100%; padding: 18px; background: var(--dyj-red); color: var(--dyj-white);
   border: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.22em;
   text-transform: uppercase; cursor: pointer; margin-top: 8px;
+  transition: transform 140ms var(--ease-out);
 }
+.m-form__submit:active { transform: scale(0.98); }
 
 /* Botones móviles */
 .m-btn-stack { display: flex; flex-direction: column; gap: 10px; }
@@ -558,7 +607,9 @@ body {
   padding: 16px 22px; text-align: center; text-decoration: none;
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
   border: none; cursor: pointer;
+  transition: transform 140ms var(--ease-out);
 }
+.m-btn:active { transform: scale(0.97); }
 .m-btn--red { background: var(--dyj-red); color: var(--dyj-white); }
 .m-btn--ghost-light { border: 1.5px solid var(--dyj-white); color: var(--dyj-white); background: transparent; }
 .m-btn--ghost-dark { border: 1.5px solid var(--dyj-ink); color: var(--dyj-ink); background: transparent; }
@@ -587,10 +638,32 @@ body {
 .m-footer__legal { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.08); font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.45; width: 100%; }
 
 /* Ficha de jugador (modal full screen) */
-.m-ficha-overlay { position: fixed; inset: 0; background: var(--dyj-ink); color: var(--dyj-white); z-index: 240; overflow-y: auto; display: flex; flex-direction: column; }
+.m-ficha-overlay {
+  position: fixed; inset: 0;
+  background: var(--dyj-ink); color: var(--dyj-white);
+  z-index: 240; overflow-y: auto;
+  display: flex; flex-direction: column;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 220ms var(--ease-out), transform 260ms var(--ease-out);
+}
+.m-ficha-overlay.is-closing { opacity: 0; transform: translateY(12px); }
+@starting-style {
+  .m-ficha-overlay {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
 .m-ficha__hero { background: var(--dyj-red); padding: 80px 20px 40px; position: relative; overflow: hidden; min-height: 50vh; display: flex; flex-direction: column; justify-content: flex-end; }
 .m-ficha__hero::before { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0 28px, rgba(255,255,255,0.09) 28px 56px); }
-.m-ficha__close { position: fixed; top: 20px; right: 20px; z-index: 3; background: rgba(0,0,0,0.5); color: var(--dyj-white); border: none; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em; padding: 10px 14px; cursor: pointer; }
+.m-ficha__close {
+  position: fixed; top: 20px; right: 20px; z-index: 3;
+  background: rgba(0,0,0,0.5); color: var(--dyj-white);
+  border: none; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  padding: 10px 14px; cursor: pointer;
+  transition: transform 140ms var(--ease-out);
+}
+.m-ficha__close:active { transform: scale(0.96); }
 .m-ficha__top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; margin-bottom: 20px; }
 .m-ficha__num { font-family: var(--font-display); font-size: 220px; line-height: 0.8; color: var(--dyj-white); position: relative; }
 .m-ficha__pos { font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; position: relative; margin-top: 10px; opacity: 0.9; }
@@ -656,4 +729,102 @@ body {
   background-color: #C8102E;
   background-image: var(--dyj-red-img);
   background-size: 100% 100%;
+}
+
+/* ==========================================================
+   Crossfade genérico para swaps (form enviado, etc.)
+   ========================================================== */
+.m-fade-in { animation: mFadeIn 200ms var(--ease-out); }
+@keyframes mFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ==========================================================
+   Modal de ficha desktop (PagePlantel) — entrada y salida suaves.
+   ========================================================== */
+.desktop-ficha-overlay {
+  opacity: 1;
+  transition: opacity 200ms var(--ease-out);
+}
+.desktop-ficha-overlay.is-closing { opacity: 0; }
+.desktop-ficha-panel {
+  animation: dFichaIn 240ms var(--ease-out);
+  transition: transform 200ms var(--ease-out), opacity 200ms var(--ease-out);
+}
+.desktop-ficha-overlay.is-closing .desktop-ficha-panel {
+  transform: translateY(8px) scale(0.99);
+  opacity: 0;
+}
+@keyframes dFichaIn {
+  from { opacity: 0; transform: translateY(12px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* ==========================================================
+   Galería desktop — caption con :hover limpio, sólo punteros finos.
+   ========================================================== */
+.gallery-card { position: relative; overflow: hidden; }
+.gallery-card__caption {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column; justify-content: flex-end;
+  padding: 20px;
+  color: var(--dyj-white);
+  background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.75));
+  opacity: 0;
+  transition: opacity 200ms var(--ease-out);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .gallery-card:hover .gallery-card__caption { opacity: 1; }
+}
+
+/* ==========================================================
+   Accesibilidad — prefers-reduced-motion.
+   Mantenemos opacidad y cambios de color (ayudan a comprender),
+   quitamos desplazamientos largos y springs.
+   ========================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+  html { scroll-behavior: auto !important; }
+  .reveal {
+    transform: none !important;
+    transition: opacity 200ms ease !important;
+  }
+  .nav__overlay {
+    transform: none !important;
+    transition: opacity 180ms ease !important;
+  }
+  .nav__burger span,
+  .nav__hamburger span {
+    transition: opacity 120ms ease !important;
+  }
+  .m-ficha-overlay,
+  .m-ficha-overlay.is-closing {
+    transform: none !important;
+    transition: opacity 160ms ease !important;
+  }
+  .btn,
+  .m-btn,
+  .nav__cta,
+  .nav__overlay-cta,
+  .m-player-card,
+  .m-tabs__btn,
+  .m-form__submit,
+  .m-ficha__close {
+    transition: background-color 140ms ease, color 140ms ease !important;
+  }
+  .btn:active,
+  .m-btn:active,
+  .nav__cta:active,
+  .nav__overlay-cta:active,
+  .m-player-card:active,
+  .m-tabs__btn:active,
+  .m-form__submit:active,
+  .m-ficha__close:active {
+    transform: none !important;
+  }
 }

@@ -160,7 +160,7 @@ export default function PagePartidos() {
         <div className="grain grain--light" />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>03 · Partidos</div>
-          <div className="display" style={{ fontSize: 'clamp(96px, 14vw, 240px)', lineHeight: 0.95, letterSpacing: '-0.01em' }}>
+          <div className="display" style={{ fontSize: 'clamp(96px, 14vw, 240px)', lineHeight: 0.95 }}>
             El marcador<br />en vivo
           </div>
           <div style={{ marginTop: 32, fontSize: 18, opacity: 0.85, maxWidth: 600, lineHeight: 1.55 }}>
@@ -172,22 +172,25 @@ export default function PagePartidos() {
       <section style={{ background: 'var(--dyj-white)', padding: '60px 48px 0' }}>
         <div style={{ display: 'flex', gap: 0, borderBottom: '2px solid var(--dyj-ink)' }}>
           {TABS.map(([k, label]) => (
-            <button key={k} onClick={() => setTab(k)} className="hoverable" style={{
+            <button key={k} onClick={() => setTab(k)} className="hoverable page-tabs__btn" style={{
               padding: '20px 28px',
               background: tab === k ? 'var(--dyj-ink)' : 'transparent',
               color: tab === k ? 'var(--dyj-white)' : 'var(--dyj-ink)',
               border: 'none',
               fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.22em',
               textTransform: 'uppercase', cursor: 'pointer',
+              transition: 'background-color 140ms ease, color 140ms ease, transform 140ms var(--ease-out)',
             }}>{label}</button>
           ))}
         </div>
       </section>
 
       <section style={{ background: 'var(--dyj-white)', padding: '60px 48px 140px' }}>
-        {tab === 'proximos'   && <PartidosProximos />}
-        {tab === 'resultados' && <PartidosResultados />}
-        {tab === 'tabla'      && <PartidosTabla />}
+        <div key={tab} className="m-tabs-panel">
+          {tab === 'proximos'   && <PartidosProximos />}
+          {tab === 'resultados' && <PartidosResultados />}
+          {tab === 'tabla'      && <PartidosTabla />}
+        </div>
       </section>
     </>
   );

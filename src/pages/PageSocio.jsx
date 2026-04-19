@@ -58,7 +58,7 @@ export default function PageSocio() {
         <div className="grain grain--light" />
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>06 · Ser socio</div>
-          <div className="display" style={{ fontSize: 'clamp(72px, 10vw, 180px)', lineHeight: 0.95, letterSpacing: '-0.01em' }}>
+          <div className="display" style={{ fontSize: 'clamp(72px, 10vw, 180px)', lineHeight: 0.95 }}>
             Sostén el club<br /><span style={{ color: 'var(--dyj-gold)' }}>desde la tribuna</span>
           </div>
           <div style={{ marginTop: 40, maxWidth: 720, fontSize: 20, opacity: 0.9, lineHeight: 1.5 }}>
@@ -70,7 +70,7 @@ export default function PageSocio() {
       <section style={{ background: 'var(--dyj-bone)', padding: '120px 48px' }}>
         <div className="reveal" style={{ maxWidth: 1400, marginBottom: 60 }}>
           <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Beneficios</div>
-          <div className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 84px)', lineHeight: 0.95, letterSpacing: '-0.01em', textTransform: 'uppercase', maxWidth: 900 }}>
+          <div className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 84px)', lineHeight: 0.95, textTransform: 'uppercase', maxWidth: 900 }}>
             Lo que recibes<br /><span style={{ color: 'var(--dyj-red)' }}>por ser parte</span>
           </div>
         </div>
@@ -93,7 +93,7 @@ export default function PageSocio() {
       <section style={{ background: 'var(--dyj-white)', padding: '120px 48px' }}>
         <div className="reveal" style={{ maxWidth: 1400, marginBottom: 60 }}>
           <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 16 }}>Aportes</div>
-          <div className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 84px)', lineHeight: 0.95, letterSpacing: '-0.01em', textTransform: 'uppercase' }}>
+          <div className="display" style={{ fontSize: 'clamp(40px, 5.5vw, 84px)', lineHeight: 0.95, textTransform: 'uppercase' }}>
             Tres formas<br />de sumarse
           </div>
         </div>
@@ -136,7 +136,7 @@ export default function PageSocio() {
 
           <div className="reveal">
             {sent ? (
-              <div style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
+              <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
                 <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red)', lineHeight: 1 }}>¡Bienvenido!</div>
                 <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 hrs</div>
                 <button className="btn btn--ghost-dark" style={{ marginTop: 32 }}
@@ -145,7 +145,7 @@ export default function PageSocio() {
                 </button>
               </div>
             ) : (
-              <form onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              <form className="m-fade-in" onSubmit={onSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
                 <FormField label="Nombre completo" value={form.nombre} onChange={onChange('nombre')} required />
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
                   <FormField label="Email" type="email" value={form.email} onChange={onChange('email')} required />

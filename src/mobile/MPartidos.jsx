@@ -81,7 +81,7 @@ export default function MPartidos() {
           ))}
         </div>
 
-        <div style={{ marginTop: 24 }}>
+        <div style={{ marginTop: 24 }} key={tab} className="m-tabs-panel">
           {tab === 'proximos' && (
             <>
               <div className="m-match m-match--next">

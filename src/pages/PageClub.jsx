@@ -16,7 +16,7 @@ export default function PageClub() {
         <div className="grain grain--light" />
         <div style={{ position: 'relative', zIndex: 2 }}>
           <div className="mono" style={{ opacity: 0.85, marginBottom: 24 }}>01 · El club</div>
-          <div className="display" style={{ fontSize: 'clamp(72px, 11vw, 200px)', lineHeight: 0.95, letterSpacing: '-0.01em' }}>
+          <div className="display" style={{ fontSize: 'clamp(72px, 11vw, 200px)', lineHeight: 0.95 }}>
             Conoce nuestra<br />historia
           </div>
         </div>
@@ -31,7 +31,7 @@ export default function PageClub() {
             <div className="mono" style={{ color: 'var(--dyj-red)', marginBottom: 24 }}>Nuestra historia</div>
             <div className="display" style={{
               fontSize: 'clamp(56px, 7vw, 112px)',
-              lineHeight: 0.95, letterSpacing: '-0.01em',
+              lineHeight: 0.95,
               color: 'var(--dyj-ink)', textTransform: 'uppercase',
             }}>
               De un grupo<br />de amigos a<br /><span style={{ color: 'var(--dyj-red)' }}>un club</span>
