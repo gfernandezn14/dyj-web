@@ -5,14 +5,14 @@ const BENEFICIOS = [
   'Acceso prioritario a partidos, finales y eventos del club.',
   'Carnet de socio numerado y kit de bienvenida.',
   'Voto en asambleas anuales del CSD.',
-  'Descuentos en merchandising y entradas a partidos amistosos.',
+  'Descuentos en prendas del club y entradas a amistosos.',
   'Invitación al asado anual del club.',
 ];
 
 const APORTES = [
   { tier: 'Plata', monto: '8.000',  detalle: 'Aporte mensual base. Carnet, voto y descuentos.' },
-  { tier: 'Oro',   monto: '15.000', detalle: 'Todo lo anterior + camiseta oficial del año.' },
-  { tier: 'Honor', monto: '30.000', detalle: 'Todo lo anterior + lugar reservado en finales y nombre en placa de socios fundadores.' },
+  { tier: 'Oro',   monto: '15.000', detalle: 'Todo lo anterior, más la camiseta oficial del año.' },
+  { tier: 'Honor', monto: '30.000', detalle: 'Todo lo anterior, más lugar reservado en finales y nombre en placa de socios fundadores.' },
 ];
 
 const EMPTY = { nombre: '', email: '', telefono: '', tier: 'Plata', motivacion: '' };
@@ -96,7 +96,7 @@ export default function MSocio() {
           <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 32, marginTop: 24, textAlign: 'center' }}>
             <div className="m-title m-red-text" style={{ fontSize: 48, marginBottom: 10 }}>¡Bienvenido!</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.22em' }}>
-              Te escribimos en las próximas 48 hrs
+              Te escribimos en las próximas 48 horas
             </div>
             <button onClick={() => { setSent(false); setForm(EMPTY); }}
                     style={{ marginTop: 22, background: 'transparent', border: '1.5px solid var(--dyj-ink)', padding: '12px 22px', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', cursor: 'pointer' }}>

@@ -32,7 +32,7 @@ export default function MUnete() {
       <MPageHeader
         kicker="05 · Únete"
         title={<>Queremos verte<br /><span className="m-red-text">en la cancha</span></>}
-        sub="Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Rellena esto y te escribimos para conocerte."
+        sub="Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Llena esto y te escribimos para conocerte."
         bgImg="/assets/jugador.jpg"
       />
 
@@ -56,7 +56,7 @@ export default function MUnete() {
           <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 32, textAlign: 'center' }}>
             <div className="m-title m-red-text" style={{ fontSize: 48, marginBottom: 10 }}>¡Listo!</div>
             <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, letterSpacing: '0.22em' }}>
-              Te escribimos en las próximas 48 hrs.
+              Te escribimos en las próximas 48 horas
             </div>
             <button onClick={() => { setSent(false); setForm(EMPTY); }}
                     style={{ marginTop: 22, background: 'transparent', border: '1.5px solid var(--dyj-ink)', padding: '12px 22px', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.22em', textTransform: 'uppercase', cursor: 'pointer' }}>
