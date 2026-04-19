@@ -198,9 +198,9 @@ function BlockManifiesto({ setPage }) {
       <div className="reveal" style={{ position: 'relative', zIndex: 2, maxWidth: 1200 }}>
         <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>Manifiesto</div>
         <div className="display" style={{ fontSize: 'clamp(36px, 4.4vw, 68px)', lineHeight: 1.15, fontWeight: 400 }}>
-          Empezamos siendo amigos.<br />
-          Seguimos siendo equipo.<br />
-          Hoy <span style={{ color: 'var(--dyj-gold)' }}>somos club</span>.
+          Empezamos siendo amigos<br />
+          Seguimos siendo equipo<br />
+          Hoy <span style={{ color: 'var(--dyj-gold)' }}>somos club</span>
         </div>
         <a href="#club" className="btn btn--ghost-light hoverable" style={{ marginTop: 48 }}
           onClick={(e) => { e.preventDefault(); setPage('club'); }}>

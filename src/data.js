@@ -6,13 +6,12 @@ export const DYJ_DATA = {
     fundado: 2020,
     ciudad: "Santiago de Chile",
     liga: "Liga Real Universitaria",
-    tagline: ["Cinco años jugando", "Uno siendo club", "Lo mejor está por venir"],
-    manifiesto: "Lo que empezó en 2020 como un grupo de abogados organizándose para competir en campeonatos de fútbol hoy es un club. Como si bastara con juntarse los fines de semana. Y durante un tiempo bastó. Pero el proyecto creció.",
+    tagline: ["Cinco años jugando", "Uno siendo club", "Y lo que viene"],
   },
 
   hero: {
     kicker: "Fundado 2020 · Santiago de Chile",
-    title: "CSD Defensa\ny Justicia\nConoce\nel club",
+    title: "Cinco años\npisando\ncancha",
     subtitle: "Club Social y Deportivo Defensa y Justicia — constituido formalmente en 2026. Campeones Nacionales de Abogados, Talca 2024.",
   },
 
@@ -85,11 +84,11 @@ export const DYJ_DATA = {
     { anio: 2024, titulo: "Campeón Nacional de Abogados — Todo Competidor", lugar: "Talca", destacado: true },
     { anio: 2023, titulo: "Subcampeón Liga Privada RM" },
     { anio: 2022, titulo: "Clasificación a Campeonato Nacional de Abogados" },
-    { anio: 2020, titulo: "Fundación del equipo" },
+    { anio: 2020, titulo: "Nace el equipo" },
   ],
 
   valores: [
-    { n: "01", titulo: "Justicia",    texto: "Promovemos la justicia como principio rector, dentro y fuera de la cancha." },
+    { n: "01", titulo: "Justicia",    texto: "Jugamos limpio. Dentro y fuera de la cancha." },
     { n: "02", titulo: "Pasión",      texto: "Cuando nos cerraron una puerta, armamos la nuestra y ganamos. Ese espíritu no se negocia." },
     { n: "03", titulo: "Fraternidad", texto: "Somos amigos antes que club, y club antes que once titulares." },
     { n: "04", titulo: "Inclusión",   texto: "Abiertos a quienes compartan nuestros valores, sean o no del mundo jurídico." },
