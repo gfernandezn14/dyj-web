@@ -23,7 +23,7 @@ function BlockProximoPartido({ setPage }) {
 
       <div className="reveal" style={{ position: 'relative', zIndex: 2, display: 'grid', gridTemplateColumns: '1fr', gap: 0, maxWidth: 1400 }}>
         <div className="mono" style={{ opacity: 0.85, marginBottom: 16, letterSpacing: '0.22em' }}>
-          Próxima fecha · {DYJ_DATA.club.liga} · {p.jornada}
+          Próxima fecha · {p.liga} · {p.jornada}
         </div>
         <div className="display" style={{ fontSize: 'clamp(72px, 9vw, 156px)', lineHeight: 0.95 }}>
           Nos vemos<br />en la cancha

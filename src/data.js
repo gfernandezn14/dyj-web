@@ -21,7 +21,9 @@ export const DYJ_DATA = {
     hora: "20:00",
     rival: "Gaucho",
     lugar: "Cancha por confirmar",
-    liga: "Liga Real Universitaria · Senior 2026 · Fecha 03 · Grupo A",
+    liga: "Liga Real Universitaria",
+    categoria: "Senior 2026",
+    grupo: "Grupo A",
     local: true,
   },
 

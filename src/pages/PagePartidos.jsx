@@ -20,7 +20,7 @@ function PartidosProximos() {
         color: 'var(--dyj-white)',
       }}>
         <div>
-          <div className="mono" style={{ opacity: 0.75, fontSize: 10 }}>{p.liga}</div>
+          <div className="mono" style={{ opacity: 0.75, fontSize: 10 }}>{p.liga} · {p.categoria} · {p.jornada} · {p.grupo}</div>
           <div className="display" style={{ fontSize: 28, lineHeight: 1, marginTop: 4 }}>{p.fecha}</div>
           <div className="mono" style={{ opacity: 0.7, marginTop: 4, fontSize: 10 }}>{p.hora}</div>
         </div>
