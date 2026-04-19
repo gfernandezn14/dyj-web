@@ -4,14 +4,14 @@ const BENEFICIOS = [
   'Acceso prioritario a partidos, finales y eventos del club.',
   'Carnet de socio numerado y kit de bienvenida.',
   'Voto en asambleas anuales del CSD.',
-  'Descuentos en merchandising y entradas a partidos amistosos.',
+  'Descuentos en prendas del club y entradas a amistosos.',
   'Invitación al asado anual del club.',
 ];
 
 const APORTES = [
   { tier: 'Plata',  monto: '8.000', detalle: 'Aporte mensual base. Carnet, voto y descuentos.' },
-  { tier: 'Oro',    monto: '15.000', detalle: 'Todo lo anterior + camiseta oficial del año.' },
-  { tier: 'Honor',  monto: '30.000', detalle: 'Todo lo anterior + lugar reservado en finales y nombre en placa de socios fundadores.' },
+  { tier: 'Oro',    monto: '15.000', detalle: 'Todo lo anterior, más la camiseta oficial del año.' },
+  { tier: 'Honor',  monto: '30.000', detalle: 'Todo lo anterior, más lugar reservado en finales y nombre en placa de socios fundadores.' },
 ];
 
 const EMPTY = { nombre: '', email: '', telefono: '', tier: 'Plata', motivacion: '' };
@@ -138,7 +138,7 @@ export default function PageSocio() {
             {sent ? (
               <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
                 <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red)', lineHeight: 1 }}>¡Bienvenido!</div>
-                <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 hrs</div>
+                <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 horas</div>
                 <button className="btn btn--ghost-dark" style={{ marginTop: 32 }}
                   onClick={() => { setSent(false); setForm(EMPTY); }}>
                   Enviar otra postulación

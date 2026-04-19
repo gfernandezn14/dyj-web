@@ -56,7 +56,7 @@ export default function PageUnete() {
             Queremos verte<br /><span style={{ color: 'var(--dyj-red)' }}>en la cancha</span>
           </div>
           <div style={{ marginTop: 40, maxWidth: 700, fontSize: 20, opacity: 0.9, lineHeight: 1.5 }}>
-            Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Rellena esto y te escribimos para conocerte.
+            Jueguen o no por oficio, los que se sumen al club se suman a un proyecto. Llena esto y te escribimos para conocerte.
           </div>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function PageUnete() {
             {sent ? (
               <div className="m-fade-in" style={{ border: '2px solid var(--dyj-ink)', padding: 60, textAlign: 'center' }}>
                 <div className="display" style={{ fontSize: 64, color: 'var(--dyj-red)', lineHeight: 1 }}>¡Listo!</div>
-                <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 hrs.</div>
+                <div className="mono" style={{ marginTop: 20, fontSize: 12 }}>Te escribimos en las próximas 48 horas</div>
                 <button className="btn btn--ghost-dark" style={{ marginTop: 32 }}
                   onClick={() => { setSent(false); setForm(EMPTY); }}>
                   Enviar otro
@@ -94,7 +94,7 @@ export default function PageUnete() {
                   <FormField label="Edad" type="number" value={form.edad} onChange={onChange('edad')} required />
                 </div>
                 <FormField label="Posición en la que juegas" value={form.posicion} onChange={onChange('posicion')} placeholder="Arquero, defensa, volante, delantero…" />
-                <FormField label="Años jugando" value={form.experiencia} onChange={onChange('experiencia')} placeholder="Donde jugaste, qué te gusta, etc." textarea />
+                <FormField label="Tu historia futbolera" value={form.experiencia} onChange={onChange('experiencia')} placeholder="Dónde jugaste, qué te gusta, cuánto tiempo llevas" textarea />
                 <FormField label="¿Algo que quieras contarnos?" value={form.mensaje} onChange={onChange('mensaje')} textarea />
                 <button type="submit" className="btn btn--red hoverable" style={{ alignSelf: 'flex-start', marginTop: 10 }}>
                   Enviar postulación →

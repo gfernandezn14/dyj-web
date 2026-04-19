@@ -10,7 +10,7 @@ const PATTERNS = [
 ];
 
 export default function PageGaleria() {
-  const items = [...DYJ_DATA.galeria, ...DYJ_DATA.galeria.map((i) => ({ ...i }))];
+  const items = DYJ_DATA.galeria;
   return (
     <>
       <section style={{ background: 'var(--dyj-red)', color: 'var(--dyj-white)', padding: '180px 48px 100px', position: 'relative', overflow: 'hidden' }}>
