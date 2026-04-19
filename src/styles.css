@@ -139,10 +139,23 @@ body {
   color: inherit !important;
   border-color: currentColor;
 }
-.nav__cta--ghost:hover {
-  background: currentColor;
+/* Hover explícito por fondo — `currentColor` en background + color rojo
+   simultáneos producen un bloque rojo sólido con el texto del mismo color. */
+.nav.is-dark-bg .nav__cta--ghost:hover {
+  background: var(--dyj-white);
   color: var(--dyj-red) !important;
-  border-color: currentColor;
+  border-color: var(--dyj-white);
+}
+.nav.is-light-bg .nav__cta--ghost:hover {
+  background: var(--dyj-ink);
+  color: var(--dyj-white) !important;
+  border-color: var(--dyj-ink);
+}
+/* El overlay es siempre oscuro */
+.nav__overlay .nav__cta--ghost:hover {
+  background: var(--dyj-white);
+  color: var(--dyj-red) !important;
+  border-color: var(--dyj-white);
 }
 
 /* Page scaffold */

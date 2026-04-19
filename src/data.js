@@ -6,17 +6,18 @@ export const DYJ_DATA = {
     fundado: 2020,
     ciudad: "Santiago de Chile",
     liga: "Liga Real Universitaria",
-    tagline: ["Cinco años jugando", "Uno siendo club", "Y lo que viene"],
+    tagline: ["Cinco años jugando", "Uno siendo club", "Lo mejor está por venir"],
   },
 
   hero: {
     kicker: "Fundado 2020 · Santiago de Chile",
-    title: "Cinco años\npisando\ncancha",
+    title: "CSD Defensa\ny Justicia\nConoce\nel club",
     subtitle: "Club Social y Deportivo Defensa y Justicia — constituido formalmente en 2026. Campeones Nacionales de Abogados, Talca 2024.",
   },
 
   proximoPartido: {
     fecha: "JUE 23 ABR",
+    jornada: "Fecha 03",
     hora: "20:00",
     rival: "Gaucho",
     lugar: "Cancha por confirmar",
