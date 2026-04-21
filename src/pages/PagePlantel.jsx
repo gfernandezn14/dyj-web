@@ -64,6 +64,7 @@ function FichaModal({ jugador, onClose }) {
             </div>
             <button onClick={requestClose} className="hoverable" style={{
               background: 'transparent', border: '1.5px solid var(--dyj-ink)',
+              color: 'var(--dyj-ink)',
               padding: '8px 16px', fontFamily: 'var(--font-mono)', fontSize: 11,
               letterSpacing: '0.18em', cursor: 'pointer',
             }}>CERRAR ✕</button>
