@@ -37,7 +37,7 @@ export default function MSocio() {
     <>
       <MPageHeader
         kicker="06 · Ser socio"
-        title={<>Sostén el club<br /><span style={{ color: 'var(--dyj-gold)' }}>desde la tribuna</span></>}
+        title={<>Apoya el club<br /><span style={{ color: 'var(--dyj-gold)' }}>desde la tribuna</span></>}
         sub="Ser parte se escribe en plural. No hace falta meter el botín en la cancha para empujar el proyecto: el socio es la base que sostiene al club, llena la tribuna y hace posible lo que viene."
         bgImg="/assets/plantel.jpg"
       />

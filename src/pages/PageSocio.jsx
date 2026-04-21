@@ -59,7 +59,7 @@ export default function PageSocio() {
         <div style={{ position: 'relative', zIndex: 2, maxWidth: 1100 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>06 · Ser socio</div>
           <div className="display" style={{ fontSize: 'clamp(72px, 10vw, 180px)', lineHeight: 0.95 }}>
-            Sostén el club<br /><span style={{ color: 'var(--dyj-gold)' }}>desde la tribuna</span>
+            Apoya el club<br /><span style={{ color: 'var(--dyj-gold)' }}>desde la tribuna</span>
           </div>
           <div style={{ marginTop: 40, maxWidth: 720, fontSize: 20, opacity: 0.9, lineHeight: 1.5 }}>
             Ser parte se escribe en plural. No hace falta meter el botín en la cancha para empujar el proyecto: el socio es la base que sostiene al club, llena la tribuna y hace posible lo que viene.

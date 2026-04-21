@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { DYJ_DATA } from '../data.js';
 import MHero from './MHero.jsx';
 import { MSectionHeader } from './MShared.jsx';
 
 export default function MInicio({ setPage }) {
+  const [expandedResult, setExpandedResult] = useState(null);
   const d = DYJ_DATA;
   const p = d.proximoPartido;
   const recientes = d.resultadosRecientes.slice(0, 5);
@@ -75,6 +77,7 @@ export default function MInicio({ setPage }) {
         </MSectionHeader>
         <div className="m-rail reveal">
           {recientes.map((r, i) => {
+            const isOpen = expandedResult === i;
             const photo = r.resultado === 'V'
               ? '/assets/victoria.jpg'
               : r.resultado === 'D'
@@ -87,18 +90,22 @@ export default function MInicio({ setPage }) {
               : 'linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.85) 100%)';
             const accent = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-white)' : 'var(--dyj-bone)';
             return (
-              <div key={i} style={{
-                aspectRatio: '3/4',
-                padding: 20,
-                display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-                color: 'var(--dyj-white)',
-                backgroundImage: `${tint}, url('${photo}')`,
-                backgroundSize: 'auto 115%',
-                backgroundPosition: 'center top',
-                backgroundRepeat: 'no-repeat',
-                backgroundColor: 'var(--dyj-ink)',
-                overflow: 'hidden',
-              }}>
+              <div key={i}
+                onClick={() => setExpandedResult(isOpen ? null : i)}
+                style={{
+                  position: 'relative',
+                  aspectRatio: '3/4',
+                  padding: 20,
+                  display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                  color: 'var(--dyj-white)',
+                  backgroundImage: `${tint}, url('${photo}')`,
+                  backgroundSize: 'auto 115%',
+                  backgroundPosition: 'center top',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundColor: 'var(--dyj-ink)',
+                  overflow: 'hidden',
+                  cursor: 'pointer',
+                }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 8 }}>
                   <div style={{ display: 'flex', flexDirection: 'column', gap: 4, fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em' }}>
                     <span style={{ opacity: 0.85 }}>FECHA · {r.fecha}</span>
@@ -121,7 +128,31 @@ export default function MInicio({ setPage }) {
                   <div style={{ fontFamily: 'var(--font-display)', fontSize: 18, marginTop: 8, opacity: 0.95, lineHeight: 1.1 }}>
                     {r.rival}
                   </div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, opacity: 0.5, marginTop: 8, letterSpacing: '0.18em' }}>
+                    {isOpen ? '▲ CERRAR' : '▼ VER GOLES'}
+                  </div>
                 </div>
+
+                {isOpen && (
+                  <div style={{
+                    position: 'absolute', bottom: 0, left: 0, right: 0,
+                    padding: '16px 20px',
+                    background: 'rgba(11,11,12,0.93)',
+                    backdropFilter: 'blur(6px)',
+                    zIndex: 10,
+                    borderTop: '1px solid rgba(255,255,255,0.12)',
+                  }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, opacity: 0.6, marginBottom: 8, letterSpacing: '0.22em' }}>
+                      GOLES CSD DyJ
+                    </div>
+                    {r.goles && r.goles.length > 0
+                      ? r.goles.map((g, j) => (
+                          <div key={j} style={{ fontFamily: 'var(--font-sans)', fontSize: 13, marginBottom: 4, opacity: 0.9 }}>· {g}</div>
+                        ))
+                      : <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, opacity: 0.55 }}>Sin registrar aún</div>
+                    }
+                  </div>
+                )}
               </div>
             );
           })}

@@ -28,8 +28,8 @@ export const DYJ_DATA = {
   },
 
   resultadosRecientes: [
-    { fecha: "16 ABR", rival: "Bastilla FC",       local: 4, visita: 1, condicion: "V", resultado: "V" },
-    { fecha: "09 ABR", rival: "Sub 20 Inmortal",   local: 0, visita: 5, condicion: "L", resultado: "D" },
+    { fecha: "16 ABR", rival: "Bastilla FC",     local: 4, visita: 1, condicion: "V", resultado: "V", goles: [] },
+    { fecha: "09 ABR", rival: "Sub 20 Inmortal", local: 0, visita: 5, condicion: "L", resultado: "D", goles: [] },
   ],
 
   tabla: [
@@ -85,7 +85,7 @@ export const DYJ_DATA = {
 
   palmares: [
     { anio: 2024, titulo: "Campeón Nacional de Abogados — Todo Competidor", lugar: "Talca", destacado: true },
-    { anio: 2023, titulo: "Subcampeón Liga Privada RM" },
+    { anio: 2023, titulo: "Subcampeón Nacional de Abogados - Todo Competidor" },
     { anio: 2022, titulo: "Clasificación a Campeonato Nacional de Abogados" },
     { anio: 2020, titulo: "Nace el equipo" },
   ],

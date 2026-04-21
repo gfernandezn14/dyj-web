@@ -59,6 +59,7 @@ function GrupoTabla({ grupo, equipos }) {
 export default function MPartidos() {
   const d = DYJ_DATA;
   const [tab, setTab] = useState('proximos');
+  const [expandedResult, setExpandedResult] = useState(null);
   const p = d.proximoPartido;
   const grupoA = d.tabla.filter((t) => t.grupo === 'A');
   const grupoB = d.tabla.filter((t) => t.grupo === 'B');
@@ -108,53 +109,86 @@ export default function MPartidos() {
           )}
 
           {tab === 'resultados' && d.resultadosRecientes.map((r, i) => {
+            const isOpen = expandedResult === i;
             const isD = r.resultado === 'D';
             const isV = r.resultado === 'V';
             const accentClass = isD ? 'm-red-bg' : '';
             const accentBg = isV ? 'var(--dyj-gold)' : isD ? undefined : 'rgba(0,0,0,0.3)';
             const accentFg = r.resultado === 'E' ? 'var(--dyj-white)' : 'var(--dyj-ink)';
             return (
-              <div key={i} style={{
-                display: 'grid',
-                gridTemplateColumns: '6px 1fr',
-                gap: 14,
-                padding: '20px 0',
-                borderBottom: '1px solid rgba(0,0,0,0.08)',
-              }}>
-                <div className={accentClass} style={{ background: accentBg }} />
-                <div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.18em', opacity: 0.55 }}>
-                      {r.fecha} · {r.condicion === 'L' ? 'LOCAL' : 'VISITA'}
-                    </div>
-                    <div className={accentClass} style={{
-                      background: accentBg, color: accentFg,
-                      padding: '4px 10px',
-                      fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em',
-                    }}>
-                      {r.resultado === 'V' ? 'VICTORIA' : r.resultado === 'D' ? 'DERROTA' : 'EMPATE'}
-                    </div>
-                  </div>
-                  <div style={{
+              <div key={i}>
+                <div
+                  onClick={() => setExpandedResult(isOpen ? null : i)}
+                  style={{
                     display: 'grid',
-                    gridTemplateColumns: '1fr auto 1fr',
-                    gap: 12,
-                    alignItems: 'center',
-                    marginTop: 12,
+                    gridTemplateColumns: '6px 1fr',
+                    gap: 14,
+                    padding: '20px 0',
+                    borderBottom: isOpen ? 'none' : '1px solid rgba(0,0,0,0.08)',
+                    cursor: 'pointer',
                   }}>
-                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1, textAlign: 'right' }}>
-                      {r.condicion === 'L' ? 'DyJ' : r.rival}
+                  <div className={accentClass} style={{ background: accentBg }} />
+                  <div>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12 }}>
+                      <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, letterSpacing: '0.18em', opacity: 0.55 }}>
+                        {r.fecha} · {r.condicion === 'L' ? 'LOCAL' : 'VISITA'}
+                      </div>
+                      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 4 }}>
+                        <div className={accentClass} style={{
+                          background: accentBg, color: accentFg,
+                          padding: '4px 10px',
+                          fontFamily: 'var(--font-mono)', fontSize: 9, letterSpacing: '0.2em',
+                        }}>
+                          {r.resultado === 'V' ? 'VICTORIA' : r.resultado === 'D' ? 'DERROTA' : 'EMPATE'}
+                        </div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 8, opacity: 0.45, letterSpacing: '0.18em' }}>
+                          {isOpen ? '▲ CERRAR' : '▼ GOLES'}
+                        </div>
+                      </div>
                     </div>
-                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, lineHeight: 1 }}>
-                      {r.condicion === 'L' ? r.local : r.visita}
-                      <span style={{ opacity: 0.4, margin: '0 4px' }}>:</span>
-                      {r.condicion === 'L' ? r.visita : r.local}
-                    </div>
-                    <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1 }}>
-                      {r.condicion === 'L' ? r.rival : 'DyJ'}
+                    <div style={{
+                      display: 'grid',
+                      gridTemplateColumns: '1fr auto 1fr',
+                      gap: 12,
+                      alignItems: 'center',
+                      marginTop: 12,
+                    }}>
+                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1, textAlign: 'right' }}>
+                        {r.condicion === 'L' ? 'DyJ' : r.rival}
+                      </div>
+                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 36, lineHeight: 1 }}>
+                        {r.condicion === 'L' ? r.local : r.visita}
+                        <span style={{ opacity: 0.4, margin: '0 4px' }}>:</span>
+                        {r.condicion === 'L' ? r.visita : r.local}
+                      </div>
+                      <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, lineHeight: 1 }}>
+                        {r.condicion === 'L' ? r.rival : 'DyJ'}
+                      </div>
                     </div>
                   </div>
                 </div>
+
+                {isOpen && (
+                  <div style={{
+                    padding: '14px 20px 18px',
+                    background: 'var(--dyj-bone)',
+                    borderBottom: '1px solid rgba(0,0,0,0.08)',
+                    display: 'flex', flexDirection: 'column', gap: 6,
+                  }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, opacity: 0.55, letterSpacing: '0.22em', marginBottom: 2 }}>
+                      GOLES CSD DyJ
+                    </div>
+                    {r.goles && r.goles.length > 0
+                      ? r.goles.map((g, j) => (
+                          <div key={j} style={{ fontFamily: 'var(--font-sans)', fontSize: 14, display: 'flex', alignItems: 'center', gap: 8 }}>
+                            <span style={{ color: 'var(--dyj-red)', fontFamily: 'var(--font-mono)', fontSize: 9 }}>{String(j + 1).padStart(2, '0')}</span>
+                            {g}
+                          </div>
+                        ))
+                      : <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, opacity: 0.5 }}>Sin registrar aún</div>
+                    }
+                  </div>
+                )}
               </div>
             );
           })}

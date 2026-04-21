@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import HeroEstadio from '../heroes/HeroEstadio.jsx';
 import SectionHeader from '../components/SectionHeader.jsx';
 import { DYJ_DATA } from '../data.js';
@@ -81,15 +82,17 @@ function BlockProximoPartido({ setPage }) {
 }
 
 function BlockResultados() {
+  const [expanded, setExpanded] = useState(null);
   return (
     <section style={{ background: 'var(--dyj-white)', padding: '140px 48px', position: 'relative' }}>
-      <SectionHeader eyebrow="Últimos resultados · Liga Real Universitaria" title={<>La temporada,<br />partido a partido</>} />
+      <SectionHeader eyebrow="Últimos resultados · Liga Real Universitaria" title={<>La temporada,<br />partido a partido</>} size="small" />
       <div className="reveal" style={{
         display: 'grid',
         gridTemplateColumns: `repeat(${Math.max(DYJ_DATA.resultadosRecientes.length, 1)}, minmax(220px, 1fr))`,
         gap: 16, maxWidth: 880,
       }}>
         {DYJ_DATA.resultadosRecientes.map((r, i) => {
+          const isOpen = expanded === i;
           const photo = r.resultado === 'V'
             ? '/assets/victoria.jpg'
             : r.resultado === 'D'
@@ -102,19 +105,22 @@ function BlockResultados() {
             : 'linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.85) 100%)';
           const accent = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-white)' : 'var(--dyj-bone)';
           return (
-            <div key={i} className="hoverable" style={{
-              position: 'relative',
-              backgroundImage: `${tint}, url('${photo}')`,
-              backgroundSize: 'auto 115%',
-              backgroundPosition: 'center top',
-              backgroundRepeat: 'no-repeat',
-              backgroundColor: 'var(--dyj-ink)',
-              color: 'var(--dyj-white)',
-              padding: 24, aspectRatio: '4/5',
-              display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
-              transition: 'transform 0.3s',
-              overflow: 'hidden',
-            }}>
+            <div key={i} className="hoverable"
+              onClick={() => setExpanded(isOpen ? null : i)}
+              style={{
+                position: 'relative',
+                backgroundImage: `${tint}, url('${photo}')`,
+                backgroundSize: 'auto 115%',
+                backgroundPosition: 'center top',
+                backgroundRepeat: 'no-repeat',
+                backgroundColor: 'var(--dyj-ink)',
+                color: 'var(--dyj-white)',
+                padding: 24, aspectRatio: '4/5',
+                display: 'flex', flexDirection: 'column', justifyContent: 'space-between',
+                transition: 'transform 0.3s',
+                overflow: 'hidden',
+                cursor: 'pointer',
+              }}>
               <div style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: 12 }}>
                 <div>
                   <div className="mono" style={{ opacity: 0.85, fontSize: 10 }}>FECHA · {r.fecha}</div>
@@ -135,7 +141,31 @@ function BlockResultados() {
                   {r.local}<span style={{ opacity: 0.5 }}>:</span>{r.visita}
                 </div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 20, marginTop: 10, opacity: 0.95 }}>{r.rival}</div>
+                <div className="mono" style={{ fontSize: 9, opacity: 0.5, marginTop: 8, letterSpacing: '0.18em' }}>
+                  {isOpen ? '▲ CERRAR' : '▼ VER GOLES'}
+                </div>
               </div>
+
+              {isOpen && (
+                <div style={{
+                  position: 'absolute', bottom: 0, left: 0, right: 0,
+                  padding: '20px 24px',
+                  background: 'rgba(11,11,12,0.93)',
+                  backdropFilter: 'blur(6px)',
+                  zIndex: 10,
+                  borderTop: '1px solid rgba(255,255,255,0.12)',
+                }}>
+                  <div className="mono" style={{ fontSize: 9, opacity: 0.6, marginBottom: 10, letterSpacing: '0.22em' }}>
+                    GOLES CSD DyJ
+                  </div>
+                  {r.goles && r.goles.length > 0
+                    ? r.goles.map((g, j) => (
+                        <div key={j} style={{ fontFamily: 'var(--font-sans)', fontSize: 14, marginBottom: 5, opacity: 0.9 }}>· {g}</div>
+                      ))
+                    : <div className="mono" style={{ fontSize: 11, opacity: 0.55 }}>Sin registrar aún</div>
+                  }
+                </div>
+              )}
             </div>
           );
         })}
@@ -173,8 +203,12 @@ function BlockPlantelPreview({ setPage }) {
               cursor: 'pointer',
             }}
               onClick={() => setPage('plantel')}>
-              <div className="display" style={{ fontSize: 80, lineHeight: 0.8, color: 'var(--dyj-red)' }}>{j.num}</div>
-              <div>
+              <div style={{ position: 'absolute', inset: 0, background: 'repeating-linear-gradient(90deg, var(--dyj-red) 0 30px, var(--dyj-white) 30px 60px)', opacity: 0.06 }} />
+              <div style={{ position: 'absolute', top: 20, right: 16, display: 'flex', alignItems: 'flex-start' }}>
+                <div className="mono" style={{ fontSize: 10, opacity: 0.45, writingMode: 'vertical-rl', transform: 'rotate(180deg)', color: 'var(--dyj-white)' }}>CSD · DyJ</div>
+              </div>
+              <div className="display" style={{ fontSize: 80, lineHeight: 0.8, color: 'var(--dyj-red)', position: 'relative' }}>{j.num}</div>
+              <div style={{ position: 'relative' }}>
                 <div className="mono" style={{ opacity: 0.55, fontSize: 10 }}>{j.pos.toUpperCase()}</div>
                 <div style={{ fontFamily: 'var(--font-display)', fontSize: 22, marginTop: 4, lineHeight: 1 }}>{j.nombre}</div>
               </div>

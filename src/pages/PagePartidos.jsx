@@ -50,40 +50,74 @@ function PartidosProximos() {
 }
 
 function PartidosResultados() {
+  const [expanded, setExpanded] = useState(null);
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: 0, maxWidth: 1200 }}>
       {DYJ_DATA.resultadosRecientes.map((r, i) => {
+        const isOpen = expanded === i;
         const colorBar = r.resultado === 'V' ? 'var(--dyj-gold)' : r.resultado === 'D' ? 'var(--dyj-red)' : 'rgba(0,0,0,0.3)';
         return (
-          <div key={i} className="reveal" style={{
-            display: 'grid', gridTemplateColumns: '8px 120px 1fr auto 1fr auto',
-            gap: 24, alignItems: 'center',
-            padding: '32px 0 32px 24px',
-            borderBottom: '1px solid rgba(0,0,0,0.1)',
-          }}>
-            <div style={{ background: colorBar, alignSelf: 'stretch', width: 6 }} />
-            <div>
-              <div className="mono" style={{ opacity: 0.55, fontSize: 10 }}>FECHA</div>
-              <div className="display" style={{ fontSize: 28, lineHeight: 1, marginTop: 4 }}>{r.fecha}</div>
+          <div key={i}>
+            <div className="reveal hoverable"
+              onClick={() => setExpanded(isOpen ? null : i)}
+              style={{
+                display: 'grid', gridTemplateColumns: '8px 120px 1fr auto 1fr auto',
+                gap: 24, alignItems: 'center',
+                padding: '32px 0 32px 24px',
+                borderBottom: isOpen ? 'none' : '1px solid rgba(0,0,0,0.1)',
+                cursor: 'pointer',
+              }}>
+              <div style={{ background: colorBar, alignSelf: 'stretch', width: 6 }} />
+              <div>
+                <div className="mono" style={{ opacity: 0.55, fontSize: 10 }}>FECHA</div>
+                <div className="display" style={{ fontSize: 28, lineHeight: 1, marginTop: 4 }}>{r.fecha}</div>
+              </div>
+              <div style={{ textAlign: 'right' }}>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 32, lineHeight: 1 }}>{r.condicion === 'L' ? 'DyJ' : r.rival}</div>
+              </div>
+              <div className="display" style={{ fontSize: 52, lineHeight: 1, textAlign: 'center' }}>
+                {r.condicion === 'L' ? r.local : r.visita}
+                <span style={{ opacity: 0.4, margin: '0 6px' }}>:</span>
+                {r.condicion === 'L' ? r.visita : r.local}
+              </div>
+              <div>
+                <div style={{ fontFamily: 'var(--font-display)', fontSize: 32, lineHeight: 1 }}>{r.condicion === 'L' ? r.rival : 'DyJ'}</div>
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', gap: 8 }}>
+                <div className="mono" style={{
+                  background: colorBar,
+                  color: r.resultado === 'E' ? 'var(--dyj-white)' : 'var(--dyj-ink)',
+                  padding: '8px 16px', letterSpacing: '0.18em', fontSize: 11,
+                }}>
+                  {r.resultado === 'V' ? 'VICTORIA' : r.resultado === 'D' ? 'DERROTA' : 'EMPATE'}
+                </div>
+                <div className="mono" style={{ fontSize: 9, opacity: 0.45, letterSpacing: '0.18em', paddingRight: 2 }}>
+                  {isOpen ? '▲ CERRAR' : '▼ GOLES'}
+                </div>
+              </div>
             </div>
-            <div style={{ textAlign: 'right' }}>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: 32, lineHeight: 1 }}>{r.condicion === 'L' ? 'DyJ' : r.rival}</div>
-            </div>
-            <div className="display" style={{ fontSize: 52, lineHeight: 1, textAlign: 'center' }}>
-              {r.condicion === 'L' ? r.local : r.visita}
-              <span style={{ opacity: 0.4, margin: '0 6px' }}>:</span>
-              {r.condicion === 'L' ? r.visita : r.local}
-            </div>
-            <div>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: 32, lineHeight: 1 }}>{r.condicion === 'L' ? r.rival : 'DyJ'}</div>
-            </div>
-            <div className="mono" style={{
-              background: colorBar,
-              color: r.resultado === 'E' ? 'var(--dyj-white)' : 'var(--dyj-ink)',
-              padding: '8px 16px', letterSpacing: '0.18em', fontSize: 11,
-            }}>
-              {r.resultado === 'V' ? 'VICTORIA' : r.resultado === 'D' ? 'DERROTA' : 'EMPATE'}
-            </div>
+
+            {isOpen && (
+              <div style={{
+                padding: '20px 24px 24px 56px',
+                borderBottom: '1px solid rgba(0,0,0,0.1)',
+                background: 'var(--dyj-bone)',
+                display: 'flex', flexDirection: 'column', gap: 8,
+              }}>
+                <div className="mono" style={{ fontSize: 9, opacity: 0.55, letterSpacing: '0.22em', marginBottom: 4 }}>
+                  GOLES CSD DyJ
+                </div>
+                {r.goles && r.goles.length > 0
+                  ? r.goles.map((g, j) => (
+                      <div key={j} style={{ fontFamily: 'var(--font-sans)', fontSize: 16, display: 'flex', alignItems: 'center', gap: 10 }}>
+                        <span style={{ color: 'var(--dyj-red)', fontFamily: 'var(--font-mono)', fontSize: 10 }}>{String(j + 1).padStart(2, '0')}</span>
+                        {g}
+                      </div>
+                    ))
+                  : <div className="mono" style={{ fontSize: 12, opacity: 0.5 }}>Sin registrar aún</div>
+                }
+              </div>
+            )}
           </div>
         );
       })}
@@ -161,7 +195,7 @@ export default function PagePartidos() {
         <div style={{ position: 'relative', zIndex: 2 }}>
           <div className="mono" style={{ color: 'var(--dyj-gold)', marginBottom: 24 }}>03 · Partidos</div>
           <div className="display" style={{ fontSize: 'clamp(96px, 14vw, 240px)', lineHeight: 0.95 }}>
-            El marcador<br />en vivo
+            El marcador<br />de la temporada
           </div>
           <div style={{ marginTop: 32, fontSize: 18, opacity: 0.85, maxWidth: 600, lineHeight: 1.55 }}>
             {DYJ_DATA.club.liga}. Temporada 2026. Todos los partidos, resultados y la tabla de posiciones.
